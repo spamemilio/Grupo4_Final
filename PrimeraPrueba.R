@@ -29,4 +29,16 @@ totales_por_tipo_auh <- prestaciones_auh %>%
   summarise(total = max(cantidad, na.rm = TRUE))
 
 
+Credito_AUH_Interanual <- read_csv("data/Credito_PG19_SPG3_2009_2021.txt")
+
+Credito_2020_por_Ubicacion <- Credito_AUH_Interanual %>% 
+  filter(ejercicio_presupuestario == 2020) %>%
+  group_by(impacto_presupuestario_mes, ubicacion_geografica_id,ubicacion_geografica_desc ) %>% 
+  summarise(vigente = sum(credito_vigente, na.rm = TRUE ),
+            pagado = sum(credito_pagado, na.rm = TRUE),
+            devengado = sum(credito_devengado, na.rm = TRUE) )
+
+Credito_2020_por_Ubicacion %>% 
+  ggplot(aes(x=impacto_presupuestario_mes, y=devengado))+
+  geom_line(aes(color=ubicacion_geografica_desc))
 
