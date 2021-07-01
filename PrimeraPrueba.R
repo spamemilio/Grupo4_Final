@@ -27,3 +27,6 @@ prestaciones_auh %>%
 totales_por_tipo_auh <- prestaciones_auh %>% 
   group_by(prestacion) %>% 
   summarise(total = max(cantidad, na.rm = TRUE))
+
+
+
