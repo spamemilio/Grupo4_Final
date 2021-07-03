@@ -11,7 +11,8 @@ glimpse(prestaciones_tidy)
 
 prestaciones_tidy %>% 
 ggplot(aes(x=indice_tiempo, y = cantidad)) +
-  geom_line(aes(color=prestacion))
+  geom_line(aes(color=prestacion))+
+  guides(color=guide_legend(ncol=1))
 
 totales_por_prestacion <- prestaciones_tidy %>% 
   group_by(prestacion) %>% 
@@ -22,7 +23,8 @@ prestaciones_auh <- prestaciones_tidy %>%
 
 prestaciones_auh %>% 
   ggplot(aes(x=indice_tiempo, y = cantidad)) +
-  geom_line(aes(color=prestacion))
+  geom_line(aes(color=prestacion))+
+  guides(color=guide_legend(ncol=1))
 
 totales_por_tipo_auh <- prestaciones_auh %>% 
   group_by(prestacion) %>% 
@@ -40,5 +42,23 @@ Credito_2020_por_Ubicacion <- Credito_AUH_Interanual %>%
 
 Credito_2020_por_Ubicacion %>% 
   ggplot(aes(x=impacto_presupuestario_mes, y=devengado))+
-  geom_line(aes(color=ubicacion_geografica_desc))
+  geom_line(aes(color=ubicacion_geografica_desc))+
+  guides(color=guide_legend(ncol=1))
 
+  theme( plot.title.position = "plot",
+         panel.border = element_blank(), panel.grid.major = element_line(colour = "grey80")
+         , panel.grid.minor = element_blank(),  
+         legend.direction = "vertical", legend.key.size = unit(1,"mm"), legend.key.width = unit(3,"mm"),
+         legend.title = element_text(size = 9, face="bold"),
+         axis.text.x = element_text(size = 7),
+         strip.text.x = element_text(size = 6,face="bold"),
+         strip.background = element_rect(color="black", fill="#FFE599", size=0.5, linetype="solid"))
+
+  prestaciones_totales <- prestaciones_tidy %>% 
+    filter(str_detect(prestacion, "total"))
+  
+  prestaciones_totales %>% 
+    ggplot(aes(x=indice_tiempo, y = cantidad)) +
+    geom_line(aes(color=prestacion))+
+    guides(color=guide_legend(ncol=1))
+  
