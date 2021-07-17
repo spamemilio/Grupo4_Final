@@ -1,0 +1,66 @@
+---
+title: "Diplomatura en análisis de datos aplicados al desarrollo de políticas públicas - Grupo 4 Trabajo Final"
+author: "Emilio Madias, Gustavo Merino, Silvia Palacios"
+date: "9/7/2021"
+output:
+  word_document: default
+  pdf_document: default
+  html_document:
+    df_print: paged
+fontsize: 12
+font: Arial
+---
+             
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(
+  echo = FALSE,
+	message = FALSE,
+	warning = FALSE)
+```
+
+# Análisis Presupuestario y de Beneficiarios de Asignación Universal Por Hijo en un período de 7 años (2013-2020) 
+
+## Objetivo: Analizar la implementación de la política pública de la AUH desde un aspecto cuantitativo y cualitativo en un periodo de 7 años (2013-2020)
+
+
+Desde su implementacion, la Asignacion Universal Por Hijo (llamada tambien Asignacion Universal para Proteccion Social) ha sido una politica publica que pretende fortalecer la proteccion social de sectores que estan marginados de otras politicas por carecer de empleo o pertenecer a poblacion con empleo informal o inestable. 
+
+Este estudio pretende realizar un analisis reproducible de dicha politica politica tanto desde el punto de vista de su asignacion presupuestaria asi como la caracterizacion de sus beneficiarios
+
+El caracter de reproducible esta dado a partir de que para su realizacion se utilizaran datos abiertos que son publicados por distintos organismos publicos. 
+
+Los datos abiertos que tomaremos son:
+
+de Presupuesto Nacional (Presupuesto de gastos y su ejecución detallada - agrupación anual)
+<https://www.presupuestoabierto.gob.ar/sici/datos-abiertos>
+
+de Anses (Estadisticas de la Seguridad Social)
+<https://www.anses.gob.ar/institucional/datos-abiertos>
+
+de Indec (Proyeccion de poblacion)
+<https://www.indec.gob.ar/indec/web/Nivel4-Tema-2-24-84>
+
+
+AGREGAR TEXTO DE SILVIA
+
+
+## Aspectos tecnicos
+
+Este análisis se realizó utilizando 
+
+    	R para limpiar y analizar los datos
+    	
+    	R Markdown para presentar el informe
+    	
+    	Visualizaciones en R para graficar las conclusiones
+      
+      Análisis de la política pública que elijamos
+
+El software utilizado para la codificacion fue RStudio
+
+### Analisis Presupuestario
+
+```{r datos_presupuesto, echo=FALSE}
+ source(".\\analysis\\datos_presupuesto.R", local = knitr::knit_global())
+```
+
