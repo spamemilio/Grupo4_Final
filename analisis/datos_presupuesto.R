@@ -1,6 +1,6 @@
 library(tidyverse)
  
-#Proceso datasets de ejecucion presupuestaria
+#Proceso datasets de ejecucion presupuestaria 
 
 lista_de_ejercicios <- c(2013:2020)
 cant_ejercicios = length(lista_de_ejercicios) 
@@ -40,7 +40,7 @@ dataset_gasto_total <- read_csv("data/serie_pib_anual.csv", col_types = "dcccc")
 dataset_gasto_por_fin_fun <- read_csv("data/serie_finfun_anual.csv", col_types = "dccccccc")
 
 
-#DATA CLEANING SESSION
+#DATA CLEANING SESSION 
 
 #Limpio y acomodo dataset de ejercicios
 
