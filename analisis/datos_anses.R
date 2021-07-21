@@ -3,7 +3,9 @@ library(tidyverse)
 library(lubridate)
 options(scipen = 100)
 
-prestaciones_previsionales_sipa_por_tipo <- read_csv("https://infra.datos.gob.ar/catalog/sspm/dataset/189/distribution/189.1/download/prestaciones-previsionales-sipa-por-tipo.csv")
+#prestaciones_previsionales_sipa_por_tipo <- read_csv("https://infra.datos.gob.ar/catalog/sspm/dataset/189/distribution/189.1/download/prestaciones-previsionales-sipa-por-tipo.csv")
+
+prestaciones_previsionales_sipa_por_tipo <- read_csv("data/prestaciones-previsionales-sipa-por-tipo.csv")
 
 prestaciones_tidy <- prestaciones_previsionales_sipa_por_tipo %>% 
   pivot_longer(cols = -ends_with("indice_tiempo"), names_to  = "prestacion", values_to ="cantidad" )
@@ -116,6 +118,19 @@ Credito_2020_por_Ubicacion %>%
   poblacion_por_edad_0_19 %>% 
     ggplot(aes(x=anio, y=total_menores))+
     geom_line( color = "red")
+  
+  prestaciones_auh_aaff <- prestaciones_tidy %>% 
+    filter( prestacion %in% c("total_aaff", "total_auh") ) %>% 
+    filter( day(indice_tiempo)==1 ) %>% 
+    filter( !is.na(cantidad) ) %>% 
+    pivot_wider(names_from = prestacion, values_from = cantidad) %>% 
+    mutate( anio = as.factor(year(indice_tiempo) )) 
+    
+  prestaciones_auh_aaff %>% 
+    ggplot(aes(x=total_aaff,y=total_auh)) +
+    geom_point(aes(color=anio))+
+    scale_color_brewer(palette="Dark2")
+    
   
   glimpse(poblacion_por_edad_0_19)
   
