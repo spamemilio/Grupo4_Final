@@ -1,5 +1,10 @@
 library(tidyverse)
- 
+library(viridis)
+library(packcircles)
+library(ggplot2)
+
+
+
 #Proceso datasets de ejecucion presupuestaria 
 
 lista_de_ejercicios <- c(2013:2020)
@@ -315,10 +320,6 @@ print(soloauh)
 
 leyenda = "Grafico de burbujas para graficar mejor la relcion entre asignaciones familiares y otros gastos sociales (sin Seguridad Social)"
 print (leyenda)
-
-library(packcircles)
-library(ggplot2)
-library(viridis)
 
 burbuja_asig_promedio <- 
   funcion_unificado_sin_seguridad_con_familiares %>% 
