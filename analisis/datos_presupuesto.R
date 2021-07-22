@@ -54,7 +54,19 @@ summary(ejercicios)
 
 ## Los importes vienen como caracteres y con, como separador, los parseo como numero y ademas vienen en millones
 es_MX <- locale("es", decimal_mark = ",")
+
+ejercicios <- read_csv("data/Credito_PG19_SPG3_2009_2021.txt") %>% 
+  filter(ejercicio_presupuestario %in% c(2013:2020) )
+
 unidad_millon = 1000000
+
+ejercicios <- ejercicios %>% 
+  mutate(credito_presupuestado = credito_presupuestado*unidad_millon,
+         credito_vigente = credito_vigente*unidad_millon,
+         credito_comprometido = credito_comprometido*unidad_millon,
+         credito_devengado =  credito_devengado*unidad_millon,
+         credito_pagado = credito_pagado*unidad_millon)
+
 ejercicios$credito_presupuestado <- parse_number(ejercicios$credito_presupuestado, locale = es_MX)*unidad_millon
 ejercicios$credito_vigente <- parse_number(ejercicios$credito_vigente, locale = es_MX)*unidad_millon
 ejercicios$credito_comprometido <- parse_number(ejercicios$credito_comprometido, locale = es_MX)*unidad_millon
