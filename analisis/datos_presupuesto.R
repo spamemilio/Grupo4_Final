@@ -1,4 +1,5 @@
 library(tidyverse)
+library(Rcpp)
 library(viridis)
 library(packcircles)
 library(ggplot2)
@@ -7,34 +8,34 @@ library(ggplot2)
 
 #Proceso datasets de ejecucion presupuestaria 
 
-lista_de_ejercicios <- c(2013:2020)
-cant_ejercicios = length(lista_de_ejercicios) 
-nombre_arch = "credito-historico-anual-"
-todos_los_ejercicios <- list()
-ej_con_bapin = 0
-
-for (i in (1:cant_ejercicios)) {
-  dataset_ejercicio <- paste0("data/credito-historico-anual-",lista_de_ejercicios[i],".csv")
-  todos_los_ejercicios [[i]] <- read.csv(dataset_ejercicio)
-  if (lista_de_ejercicios[i]>=2020) {
-    ej_con_bapin = ej_con_bapin+1
-  }
-}
+# lista_de_ejercicios <- c(2013:2020)
+# cant_ejercicios = length(lista_de_ejercicios) 
+# nombre_arch = "credito-historico-anual-"
+# todos_los_ejercicios <- list()
+# ej_con_bapin = 0
+# 
+# for (i in (1:cant_ejercicios)) {
+#   dataset_ejercicio <- paste0("data/credito-historico-anual-",lista_de_ejercicios[i],".csv")
+#   todos_los_ejercicios [[i]] <- read.csv(dataset_ejercicio)
+#   if (lista_de_ejercicios[i]>=2020) {
+#     ej_con_bapin = ej_con_bapin+1
+#   }
+# }
 
 #A partir de 2020 los datasets tienen 4 columnas mas (pex+descripcion, bapin+descripcion)
 #Las voy a quitar para poder hacer rbind
 
-ultimo_ej = cant_ejercicios + 1
-for (j in (1:ej_con_bapin)) {
-   dataset_a_corregir <- todos_los_ejercicios[[ultimo_ej-j]]
-   dataset_a_corregir$prestamo_externo_id <- NULL
-   dataset_a_corregir$prestamo_externo_desc <- NULL
-   dataset_a_corregir$codigo_bapin_id <- NULL
-   dataset_a_corregir$codigo_bapin_desc <- NULL
-   todos_los_ejercicios[[ultimo_ej-j]] <- dataset_a_corregir 
-}  
-
-ejercicios <- do.call("rbind",todos_los_ejercicios)
+# ultimo_ej = cant_ejercicios + 1
+# for (j in (1:ej_con_bapin)) {
+#    dataset_a_corregir <- todos_los_ejercicios[[ultimo_ej-j]]
+#    dataset_a_corregir$prestamo_externo_id <- NULL
+#    dataset_a_corregir$prestamo_externo_desc <- NULL
+#    dataset_a_corregir$codigo_bapin_id <- NULL
+#    dataset_a_corregir$codigo_bapin_desc <- NULL
+#    todos_los_ejercicios[[ultimo_ej-j]] <- dataset_a_corregir 
+# }  
+# 
+# ejercicios <- do.call("rbind",todos_los_ejercicios)
 
 
 #Tratamiento dataset de gasto total
@@ -49,14 +50,16 @@ dataset_gasto_por_fin_fun <- read_csv("data/serie_finfun_anual.csv", col_types =
 
 #Limpio y acomodo dataset de ejercicios
 
-#EDA para ver si hay valores raros
-summary(ejercicios)
+
 
 ## Los importes vienen como caracteres y con, como separador, los parseo como numero y ademas vienen en millones
 es_MX <- locale("es", decimal_mark = ",")
 
-ejercicios <- read_csv("data/Credito_PG19_SPG3_2009_2021.txt") %>% 
+ejercicios <- read_csv("data/credito_auh_2009_2021.csv") %>% 
   filter(ejercicio_presupuestario %in% c(2013:2020) )
+
+#EDA para ver si hay valores raros
+summary(ejercicios)
 
 unidad_millon = 1000000
 
@@ -67,14 +70,16 @@ ejercicios <- ejercicios %>%
          credito_devengado =  credito_devengado*unidad_millon,
          credito_pagado = credito_pagado*unidad_millon)
 
-ejercicios$credito_presupuestado <- parse_number(ejercicios$credito_presupuestado, locale = es_MX)*unidad_millon
-ejercicios$credito_vigente <- parse_number(ejercicios$credito_vigente, locale = es_MX)*unidad_millon
-ejercicios$credito_comprometido <- parse_number(ejercicios$credito_comprometido, locale = es_MX)*unidad_millon
-ejercicios$credito_devengado <- parse_number(ejercicios$credito_devengado, locale = es_MX)*unidad_millon
-ejercicios$credito_pagado <- parse_number(ejercicios$credito_pagado, locale = es_MX)*unidad_millon
+# ejercicios$credito_presupuestado <- parse_number(ejercicios$credito_presupuestado, locale = es_MX)*unidad_millon
+# ejercicios$credito_vigente <- parse_number(ejercicios$credito_vigente, locale = es_MX)*unidad_millon
+# ejercicios$credito_comprometido <- parse_number(ejercicios$credito_comprometido, locale = es_MX)*unidad_millon
+# ejercicios$credito_devengado <- parse_number(ejercicios$credito_devengado, locale = es_MX)*unidad_millon
+# ejercicios$credito_pagado <- parse_number(ejercicios$credito_pagado, locale = es_MX)*unidad_millon
 
 #Saco esta columna porque no aporta a este analisis
-ejercicios$ultima_actualizacion_fecha <- NULL
+# ejercicios$ultima_actualizacion_fecha <- NULL
+ejercicios <- ejercicios %>% 
+  select(-ultima_actualizacion_fecha)
 
 
 #la actividad dentro del programa de auh cambio en 2018 pero no esta incluido en la 

@@ -61,6 +61,6 @@ El software utilizado para la codificacion fue RStudio
 ### Analisis Presupuestario
 
 ```{r datos_presupuesto, echo=FALSE}
- source(".\\analysis\\datos_presupuesto.R", local = knitr::knit_global())
+ source(".\\analisis\\datos_presupuesto.R", local = knitr::knit_global())
 ```
 
