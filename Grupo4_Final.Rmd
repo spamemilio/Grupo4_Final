@@ -64,3 +64,42 @@ El software utilizado para la codificacion fue RStudio
  source(".\\analisis\\datos_presupuesto.R", local = knitr::knit_global())
 ```
 
+### Análisis Datos ANSES
+
+```{r datos_anses, include=FALSE}
+ source(".\\analisis\\datos_anses.R", local = knitr::knit_global())
+```
+
+
+Aquí vemos el dataset de Anses desagregado. La principal línea es la cantidad de niños y niñas. En segundo lugar se encuentra la suma de Asignaciones Familiares y AUH. Por último la tercera línea son las jubilaciones y pensiones
+```{r grafico_prestaciones_desagredadas, echo=FALSE}
+print(grafico_prestaciones_desagredadas)
+```
+
+Aislamos las prestaciones de las que se compone la AUH. Encabezan la lista hijos e hijas discapacitados y la categoría "otra condición".
+
+```{r datos_prestaciones_auh, echo=FALSE}
+print(grafico_prestaciones_auh)
+```
+
+Observamos la evolución por provincia de los créditos destinados al programa
+
+```{r grafico_evolucion_presupuesto_AUH, echo=FALSE}
+print(grafico_evolucion_presupuesto_AUH)
+##ver de pasar a la otra parte
+```
+
+
+Vemos el mismo gráfico pero normalizando por el total de la población total de las edades objetivo. Se puede apreciar un crecimiento importante entre los años 2015 y 2020.
+
+```{r grafico_prestaciones_proporcion, echo=FALSE}
+print(grafico_prestaciones_proporcion)
+```
+
+Analizamos una correlación negativa entre asignaciones familiares y asignación por hijo. Interpretamos que esto es producto del deterioro de las condiciones laborales durante los años de crisis económica que expulsan a la fuerza de trabajo del mercado formal.
+
+```{r grafico_correlacion_auh_aaff, echo=FALSE}
+print(grafico_correlacion_auh_aaff)
+```
+
+

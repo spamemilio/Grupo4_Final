@@ -1,17 +1,18 @@
 setwd("~/Diplomatura/Trabajo Final/Grupo4_Final")
 library(tidyverse)
 library(lubridate)
+library(readxl)
 options(scipen = 100)
 
 #prestaciones_previsionales_sipa_por_tipo <- read_csv("https://infra.datos.gob.ar/catalog/sspm/dataset/189/distribution/189.1/download/prestaciones-previsionales-sipa-por-tipo.csv")
 
-prestaciones_previsionales_sipa_por_tipo <- read_csv("data/prestaciones-previsionales-sipa-por-tipo.csv")
+prestaciones_previsionales_sipa_por_tipo <- read_csv("data/prestaciones-previsionales-sipa-por-tipo.csv") %>% 
+  filter(year(indice_tiempo) %in% c(2013:2020))
 
 prestaciones_tidy <- prestaciones_previsionales_sipa_por_tipo %>% 
-  pivot_longer(cols = -ends_with("indice_tiempo"), names_to  = "prestacion", values_to ="cantidad" )
+  pivot_longer(cols = -ends_with("indice_tiempo"), names_to  = "prestacion", values_to ="cantidad" ) 
 
-glimpse(prestaciones_tidy)  
-
+grafico_prestaciones_desagredadas <- 
 prestaciones_tidy %>% 
 ggplot(aes(x=indice_tiempo, y = cantidad)) +
   geom_line(aes(color=prestacion))+
@@ -24,6 +25,7 @@ totales_por_prestacion <- prestaciones_tidy %>%
 prestaciones_auh <- prestaciones_tidy %>% 
   filter(str_detect(prestacion, "asignacion_universal"))
 
+grafico_prestaciones_auh <- 
 prestaciones_auh %>% 
   ggplot(aes(x=indice_tiempo, y = cantidad)) +
   geom_line(aes(color=prestacion))+
@@ -32,7 +34,6 @@ prestaciones_auh %>%
 totales_por_tipo_auh <- prestaciones_auh %>% 
   group_by(prestacion) %>% 
   summarise(total = max(cantidad, na.rm = TRUE))
-
 
 Credito_AUH_Interanual <- read_csv("data/Credito_PG19_SPG3_2009_2021.txt")
 
@@ -43,11 +44,11 @@ Credito_2020_por_Ubicacion <- Credito_AUH_Interanual %>%
             pagado = sum(credito_pagado, na.rm = TRUE),
             devengado = sum(credito_devengado, na.rm = TRUE) )
 
+grafico_evolucion_presupuesto_AUH <- 
 Credito_2020_por_Ubicacion %>% 
   ggplot(aes(x=impacto_presupuestario_mes, y=devengado))+
   geom_line(aes(color=ubicacion_geografica_desc))+
-  guides(color=guide_legend(ncol=1))
-
+  guides(color=guide_legend(ncol=1))+
   theme( plot.title.position = "plot",
          panel.border = element_blank(), panel.grid.major = element_line(colour = "grey80")
          , panel.grid.minor = element_blank(),  
@@ -65,14 +66,13 @@ Credito_2020_por_Ubicacion %>%
     geom_line(aes(color=prestacion))+
     guides(color=guide_legend(ncol=1))
   
-  library(readxl)
-  
-  poblacion_por_sexo_edad <-  read_excel("data/c1_proyecciones_nac_2010_2040.xls", 
+  # incorporamos las proyecciones de población de INDEC
+poblacion_por_sexo_edad <-  read_excel("data/c1_proyecciones_nac_2010_2040.xls", 
                                               sheet = "cuadro 1", skip = 4) %>% 
-    rename(anio = ...1) %>% 
-    mutate(anio = as.numeric(anio ) ) %>% 
-    filter(!is.na(anio)) %>% 
-    select(-c(...5,...6,...7))
+                              rename(anio = ...1) %>% 
+                              mutate(anio = as.numeric(anio ) ) %>% 
+                              filter(!is.na(anio)) %>% 
+                              select(-c(...5,...6,...7))
   
   poblacion_por_edad_rango <- read_excel("data/c2_proyecciones_nac_2010_2040.xls", 
                                               skip = 5) %>% 
@@ -109,7 +109,8 @@ Credito_2020_por_Ubicacion %>%
     left_join(poblacion_por_edad_0_19) %>% 
     mutate(proporcion = cantidad/total_menores)
   
-  prestaciones_auh_total_menores %>% 
+  grafico_prestaciones_proporcion <- 
+    prestaciones_auh_total_menores %>% 
     ggplot(aes(x=anio, y = proporcion)) +
     geom_line(aes(color=prestacion),size=2)+
     guides(color=guide_legend(ncol=1))+
@@ -126,11 +127,9 @@ Credito_2020_por_Ubicacion %>%
     pivot_wider(names_from = prestacion, values_from = cantidad) %>% 
     mutate( anio = as.factor(year(indice_tiempo) )) 
     
+  grafico_correlacion_auh_aaff <- 
   prestaciones_auh_aaff %>% 
     ggplot(aes(x=total_aaff,y=total_auh)) +
     geom_point(aes(color=anio))+
     scale_color_brewer(palette="Dark2")
-    
-  
-  glimpse(poblacion_por_edad_0_19)
   
