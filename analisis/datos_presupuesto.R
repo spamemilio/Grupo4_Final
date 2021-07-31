@@ -5,7 +5,6 @@ library(packcircles)
 library(ggplot2)
 
 
-
 #Proceso datasets de ejecucion presupuestaria 
 
 # lista_de_ejercicios <- c(2013:2020)
@@ -183,38 +182,6 @@ gasto_unif_familiares_por_anio$porc_sobre_gasto_social <- gasto_unif_familiares_
 gasto_unif_familiares_por_anio$porc_sobre_gasto_total <- gasto_unif_familiares_por_anio$total_gasto_familiar/gasto_unif_familiares_por_anio$gasto
 gasto_unif_familiares_por_anio$porc_sobre_PIB <- gasto_unif_familiares_por_anio$total_gasto_familiar/gasto_unif_familiares_por_anio$PIB
 
-print ("Graficos de AUH")
-
-auh1 <- gasto_unificado_por_anio %>% 
-  ggplot(aes(x=ejercicio_presupuestario,y=auh_sobre_PIB))+
-  geom_line ()+
-  labs(title="Evolucion anual de AUH como % del PIB",
-       y="% Auh sobre PBI",
-       x = "Anio")+
-  theme_classic()
-
-print (auh1)
-
-auh2 <- gasto_unificado_por_anio %>% 
-  ggplot(aes(x=ejercicio_presupuestario,y=auh_sobre_gasto_total))+
-  geom_line (color="Red")+
-  labs(title="Evolucion anual de AUH como % del Gasto Total",
-       y="% Auh sobre Gasto",
-       x = "Año")+
-  theme_classic()
-
-print (auh2) 
-
-auh3 <- gasto_unificado_por_anio %>% 
-  ggplot(aes(x=ejercicio_presupuestario,y=auh_sobre_gasto_social))+
-  geom_line ()+
-  labs(title="Evolucion anual de AUH como % del Gasto Social",
-       y="% Auh sobre Gasto Social",
-       x = "Año")+
-  theme_classic()
-
-print (auh3)
-
 summary (gasto_unificado_por_anio)
 
 gasto_unificado_porcentajes <- 
@@ -224,31 +191,6 @@ gasto_unificado_porcentajes <-
 gasto_unificado_tidy <- gasto_unificado_porcentajes %>% 
     pivot_longer(cols = -ejercicio_presupuestario, names_to = "Tipo", values_to = "Porcentaje")
 
-gasto1 <- gasto_unificado_tidy %>% 
-  ggplot(aes(x=ejercicio_presupuestario, y = Porcentaje)) +
-  geom_line(aes(color=Tipo))+
-  guides(color=guide_legend(ncol=1))
-
-print (gasto1)
-
-#Grafico de asignaciones familiares
-
-flia1 <- gasto_unif_familiares_por_anio %>% 
-  ggplot(aes(actividad_desc, porc_sobre_gasto_social)) +
-  geom_col(aes(color=actividad_desc, fill=actividad_desc), position=position_dodge(width = 10))+
-  facet_wrap(~ ejercicio_presupuestario)+
-  guides(color=guide_legend(ncol=1))+
-  theme(legend.position = "bottom")
-
-print (flia1)
-
-flia2 <- gasto_unif_familiares_por_anio %>% 
-  ggplot(aes(x=ejercicio_presupuestario, y = porc_sobre_gasto_social)) +
-  geom_line(aes(color=actividad_desc))+
-  guides(color=guide_legend(ncol=1))+
-  theme(legend.position = "bottom")
-
-print (flia2)
 
 #Mas analisis, ahora comparando la finalidad funcion Seguridad Social con las otras pertenecientes a Gasto Social
 #Genero analisis de servicios sociales por anio
@@ -264,124 +206,4 @@ funcion_unificado_por_anio <- left_join(funcion_por_anio, dataset_gasto_total)
 funcion_unificado_por_anio$porc_sobre_gasto_total <- funcion_unificado_por_anio$total_gasto_social/funcion_unificado_por_anio$gasto
 funcion_unificado_por_anio$porc_sobre_PIB <- funcion_unificado_por_anio$total_gasto_social/funcion_unificado_por_anio$PIB
 
-leyenda = "Mas analisis, ahora comparando la finalidad funcion Seguridad Social con las otras pertenecientes a Gasto Social"
-print(leyenda)
 
-leyenda = "Como vemos en este grafico el gasto en seguridad social explica gran parte del gasto social. Sin embargo, la gran mayoria son jubilaciones por lo que vamos a sacar la finalidad seguridad social y dejar solo la parte de asignaciones familiares"
-print (leyenda)
-
-unif1 <- funcion_unificado_por_anio %>% 
-  ggplot(aes(x=ejercicio_presupuestario, y = porc_sobre_gasto_total)) +
-  geom_line(aes(color=funcion_desc))+
-  guides(color=guide_legend(ncol=1))+
-  theme(legend.position = "bottom")
-
-print(unif1)
-
-#Ahora dejamos solo la parte de asignaciones familiares en la fin fun 3.3
-leyenda = "Ahora dejamos solo la parte de asignaciones familiares"
-print (leyenda)
-
-  asignaciones_familiares_por_anio <- 
-    gasto_unif_familiares_por_anio %>% 
-    group_by(ejercicio_presupuestario) %>% 
-     summarise(porc_sobre_gasto_total = sum(porc_sobre_gasto_social))
-
-  #Agrego una columna para tener la descripcion
-  asignaciones_familiares_por_anio$funcion_desc = "Asignaciones Familiares"
-
-  
-  #ahora saco la funcion seguridad social  
-funcion_unificado_sin_seguridad <-  
-  funcion_unificado_por_anio %>% 
-  filter (funcion_desc != "Seguridad Social") %>% 
-  select (c(ejercicio_presupuestario, porc_sobre_gasto_total, funcion_desc))
-
-funcion_unificado_sin_seguridad_con_familiares <- rbind(funcion_unificado_sin_seguridad,asignaciones_familiares_por_anio)
-
-sinsegu1 <- funcion_unificado_sin_seguridad_con_familiares %>% 
-  ggplot(aes(x=ejercicio_presupuestario, y = porc_sobre_gasto_total)) +
-  geom_line(aes(color=funcion_desc))+
-  guides(color=guide_legend(ncol=1))+
-  theme(legend.position = "bottom")
-
-print(sinsegu1)
-
-#Hacemos el mismo analisis pero solo la AUH en lugar de todas las asignaciones
-leyenda = "Ahora dejamos solo AUH en lugar de todas las asignaciones faamiliares"
-print (leyenda)
-
-
-
-auh_por_anio_sobre_gasto_total <- 
-  gasto_unif_familiares_por_anio %>% 
-  filter (actividad_desc == "AUH") %>% 
-  group_by(ejercicio_presupuestario) %>% 
-  summarise(porc_sobre_gasto_total = sum(porc_sobre_gasto_social)) 
-
-#Agrego una columna para tener la descripcion
-auh_por_anio_sobre_gasto_total$funcion_desc = "AUH"
-
-funcion_unificado_sin_seguridad_solo_auh <- rbind(funcion_unificado_sin_seguridad,auh_por_anio_sobre_gasto_total)
-
-soloauh <- funcion_unificado_sin_seguridad_solo_auh %>% 
-  ggplot(aes(x=ejercicio_presupuestario, y = porc_sobre_gasto_total)) +
-  geom_line(aes(color=funcion_desc))+
-  guides(color=guide_legend(ncol=1))+
-  theme(legend.position = "bottom")
-
-print(soloauh)
-
-
-#GRAFICO DE BURBUJAS
-
-leyenda = "Grafico de burbujas para graficar mejor la relcion entre asignaciones familiares y otros gastos sociales (sin Seguridad Social)"
-print (leyenda)
-
-burbuja_asig_promedio <- 
-  funcion_unificado_sin_seguridad_con_familiares %>% 
-  group_by (funcion_desc)  %>% 
-  summarise (porc_sobre_gasto_total = mean(porc_sobre_gasto_total))
-
-data = burbuja_asig_promedio
-
-packing <- circleProgressiveLayout(data$porc_sobre_gasto_total, sizetype='area')
-data <- cbind(data, packing)
-dat.gg <- circleLayoutVertices(packing, npoints=50)
-
-burflia <- ggplot() + 
-  geom_polygon(data = dat.gg, aes(x, y, funcion_desc = id, fill=as.factor(id)), colour = "black", alpha = 0.6) +
-  scale_fill_manual(values = magma(nrow(data))) +
-  geom_text(data = data, aes(x, y, size=porc_sobre_gasto_total, label = funcion_desc)) +
-  scale_size_continuous(range = c(1,4)) +
-  theme_void() + 
-  theme(legend.position="none") +
-  coord_equal()
-
-print(burflia)
-
-leyenda = "Grafico de burbujas para graficar mejor relacion entre AUH y otros gastos sociales (sin Seguridad Social)"
-print (leyenda)
-
-
-burbuja_auh_promedio <- 
-  funcion_unificado_sin_seguridad_solo_auh %>% 
-  group_by (funcion_desc)  %>% 
-  summarise (porc_sobre_gasto_total = mean(porc_sobre_gasto_total))
-
-data = burbuja_auh_promedio
-
-packing <- circleProgressiveLayout(data$porc_sobre_gasto_total, sizetype='area')
-data <- cbind(data, packing)
-dat.gg <- circleLayoutVertices(packing, npoints=50)
-
-bur_auh <- ggplot() + 
-  geom_polygon(data = dat.gg, aes(x, y, funcion_desc = id, fill=as.factor(id)), colour = "black", alpha = 0.6) +
-  scale_fill_manual(values = magma(nrow(data))) +
-  geom_text(data = data, aes(x, y, size=porc_sobre_gasto_total, label = funcion_desc)) +
-  scale_size_continuous(range = c(1,4)) +
-  theme_void() + 
-  theme(legend.position="none") +
-  coord_equal()
-
-print(bur_auh)
