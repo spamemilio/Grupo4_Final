@@ -4,7 +4,7 @@ print (leyenda)
 asignaciones_familiares_por_anio <- 
   gasto_unif_familiares_por_anio %>% 
   group_by(ejercicio_presupuestario) %>% 
-  summarise(porc_sobre_gasto_total = sum(porc_sobre_gasto_social))
+  summarise(porc_sobre_gasto_total = sum(porc_sobre_gasto_total))
 
 #Agrego una columna para tener la descripcion
 asignaciones_familiares_por_anio$funcion_desc = "Asignaciones Familiares"

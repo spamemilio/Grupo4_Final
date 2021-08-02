@@ -9,7 +9,7 @@ auh_por_anio_sobre_gasto_total <-
   gasto_unif_familiares_por_anio %>% 
   filter (actividad_desc == "AUH") %>% 
   group_by(ejercicio_presupuestario) %>% 
-  summarise(porc_sobre_gasto_total = sum(porc_sobre_gasto_social)) 
+  summarise(porc_sobre_gasto_total = sum(porc_sobre_gasto_total)) 
 
 #Agrego una columna para tener la descripcion
 auh_por_anio_sobre_gasto_total$funcion_desc = "AUH"

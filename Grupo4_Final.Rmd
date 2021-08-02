@@ -232,11 +232,12 @@ Los montos asignados en la ley de Presupuesto, así como la descripción de la p
 La ejecución presupuestaria se puede seguir en el sitio Presupuesto Abierto <https://www.presupuestoabierto.gob.ar/sici/home>
 
 
-### Análisis Presupuestario
+## Análisis Presupuestario
 
 Para poder efectuar una comparación interanual de asignaciones presupuestarias es necesario encontrar una unidad de medida que permita dejar de lado el componente inflacionario que esta presente en la economía argentina. 
 
 La forma que elegimos es analizar desde el punto de vista de porcentaje de participacion sobre distintos conceptos de la economía.
+
 En nuestro caso vamos a utilizar estos totalizadores:
 
 * El PBI (Producto Bruto Interno)
@@ -246,11 +247,11 @@ En nuestro caso vamos a utilizar estos totalizadores:
 * El Gasto Social (Total ejecutado de la finalidad función 3 "Servicios Sociales" en el Presupuesto Nacional al final de cada año)
 
 
-
-
 ```{r datos_presupuesto, echo=FALSE}
  source(".\\analisis\\datos_presupuesto.R", local = knitr::knit_global())
 ```
+
+### Análisis de AUH respecto al PBI, al gasto total y al gasto social del Presupuesto Nacional
 
 Vamos a analizar gráficamente la evolución de la AUH como porcentaje del PBI, del Gasto Total y del Gasto Social
 
@@ -265,6 +266,9 @@ fluctuante y acompaña los períodos de la economía, en los años de crisis el 
 En este último gráfico analizamos el gasto social y la AUH respecto a los demas indicadores. 
 Asi vemos la importancia que tiene el gasto social sobre el gasto total (representa alrededor de un 60% del mismo), el % del gasto total sobre el PBI (un poco mas que 20%) y en consecuencia vemos que el gasto social contenido en el Presupuesto Nacional representa un poco mas del 10% del PBI. 
 
+
+#### Alcance del Presupuesto Nacional
+
 Es relevante recordar que el Presupuesto Nacional no representa todo el Sector Público Nacional sino solo lo contemplado dentro de la Ley de Presupuesto. 
 
 Lo vemos en este cuadro
@@ -274,6 +278,8 @@ Lo vemos en este cuadro
 Para mas información acerca del alcance del Presupuesto consultar en
 <https://www.presupuestoabierto.gob.ar/sici/que-incluye>
 
+
+### Análisis del gasto en AUH respecto a otras asignaciones familiares financiadas por ANSES
 
 Ahora analizamos la AUH respecto a otras asignaciones familiares financiadas por ANSES:
 
@@ -295,6 +301,8 @@ Ahora analizamos la AUH respecto a otras asignaciones familiares financiadas por
 Es interesante ver que las asignaciones familiares a trabajadores activos
 parecen tener una correlacion inversa con la AUH, cuando una sube la otra baja. Y por otro lado vemos que con el correr de los años y la crisis económica la AUH
 termina representando un monto mayor que la asignación familiar a trabajadores activos. 
+
+### Analisis de la AUH respecto al Gasto Social financiado por el Presupuesto Nacional
 
 Para continuar con el análisis vamos a utilizar el clasificador presupuestario por funcion. (llamado finalidad función)
 
@@ -341,21 +349,31 @@ La lista completa es la siguiente:
   - 5.1 Servicio de la deuda pública (intereses y gastos)
 
 
-La AUH pertenece a la finalidad función "Seguridad Social" (3.3)
+La AUH pertenece a la finalidad "Servicios Sociales" (finalidad = 3) y dentro de esa finalidad forma parte de la función "Seguridad Social" (3.3) (junto con otros gastos)
 
-
+Realizamos ahora un análisis de cómo se compone el Gasto Social (finalidad = 3)
+en cuanto a su distribución en sus distintas funciones
 
 ```{r graficos_presu_3, echo=FALSE}
  source(".\\analisis\\graficos_presu_3.R", local = knitr::knit_global())
 ```
 
+Como vemos en este gráfico el gasto en seguridad social explica gran parte del gasto social.
+
+Sin embargo, la mayor parte del gasto en Seguridad Social está dado por las jubilaciones y pensiones. Por ello vamos a repetir el análisis pero dejando solamente las asignaciones familiares en lugar de todo el gasto en Seguridad Social
+
 ```{r graficos_presu_4, echo=FALSE}
  source(".\\analisis\\graficos_presu_4.R", local = knitr::knit_global())
 ```
 
+El mismo análisis pero dejando solo AUH en lugar de todas las asignaciones familiares
+
+
 ```{r graficos_presu_5, echo=FALSE}
  source(".\\analisis\\graficos_presu_5.R", local = knitr::knit_global())
 ```
+
+Como vemos la evolución de la AUH ha ido creciendo hasta alcanzar casi la preproderancia respecto a las demas funciones del Gasto Social (sacando jubilaciones y pensiones)
 
 ```{r graficos_presu_6, echo=FALSE}
  source(".\\analisis\\graficos_presu_6.R", local = knitr::knit_global())
