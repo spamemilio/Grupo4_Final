@@ -373,7 +373,11 @@ El mismo análisis pero dejando solo AUH en lugar de todas las asignaciones fami
  source(".\\analisis\\graficos_presu_5.R", local = knitr::knit_global())
 ```
 
-Como vemos la evolución de la AUH ha ido creciendo hasta alcanzar casi la preproderancia respecto a las demas funciones del Gasto Social (sacando jubilaciones y pensiones)
+Como vemos la AUH es casi la única función que ha ido creciendo en su peso respecto al gasto social. La mayoría de las demas funciones han decaído salvo algunas que se mantienen relativamente constantes. 
+
+Por último, vamos a graficar cómo ha sido, en promedio la participación de las asignaciones familiares y de la AUH respecto a las demás funciones del gasto social a lo largo de los años del análisis
+
+Presentamos dos gráficos, uno con todas las asignaciones familiares y otro solo con la AUH
 
 ```{r graficos_presu_6, echo=FALSE}
  source(".\\analisis\\graficos_presu_6.R", local = knitr::knit_global())
