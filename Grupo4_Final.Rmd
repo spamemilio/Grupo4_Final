@@ -246,55 +246,6 @@ En nuestro caso vamos a utilizar estos totalizadores:
 * El Gasto Social (Total ejecutado de la finalidad función 3 "Servicios Sociales" en el Presupuesto Nacional al final de cada año)
 
 
-Para realizar un análisis presupuestario debemos conocer que existen diferentes clasificadores presupuestarios (tanto para los egresos como para los ingresos)
-
-En el caso de los egresos vamos a utilizar para este análisis el clasificador por función (llamado finalidad función)
-
-Según el Manual de Clasificaciones Presupuestarias para el Sector Público Nacional (disponible en <https://capacitacion.mecon.gob.ar/manuales_nuevo/Presupuesto-Clasificador13.pdf>), la clasificación funcional presenta el gasto público según la naturaleza de los servicios que las instituciones públicas brindan a la comunidad. Los gastos clasificados por finalidad y función permiten determinar los objetivos generales y los medios a través de los cuales se estiman alcanzar éstos. En estos términos la clasificación por finalidades y funciones se constituye en un instrumento fundamental para la toma de decisiones por el poder político.
-
-La clasificación se divide en dos dígitos: el primero corresponde a la finalidad y el segundo a la función
-
-La lista completa es la siguiente:
-
-+ 1 Administración gubernamental
-  - 1.1 Legislativa
-  - 1.2 Judicial
-  - 1.3 Dirección superior ejecutiva
-  - 1.4 Relaciones exteriores
-  - 1.5 Relaciones interiores
-  - 1.6 Administración fiscal
-  - 1.7 Control de la gestión pública
-  - 1.8 Información y estadística básicas
-+ 2 Servicios de defensa y seguridad
-  - 2.1 Defensa
-  - 2.2 Seguridad interior
-  - 2.3 Sistema penal
-  - 2.4 Inteligencia
-+ 3 Servicios sociales
-  - 3.1 Salud
-  - 3.2 Promoción y asistencia social
-  - 3.3 Seguridad social
-  - 3.4 Educación y cultura
-  - 3.5 Ciencia y técnica
-  - 3.6 Trabajo
-  - 3.7 Vivienda y urbanismo
-  - 3.8 Agua potable y alcantarillado
-  - 3.9 Otros servicios urbanos
-+ 4 Servicios económicos
-  - 4.1 Energía, combustibles y minería
-  - 4.2 Comunicaciones
-  - 4.3 Transporte
-  - 4.4 Ecología y medio ambiente
-  - 4.5 Agricultura
-  - 4.6 Industria
-  - 4.7 Comercio, turismo y otros servicios
-  - 4.8 Seguros y finanzas
-+ 5 Deuda pública
-  - 5.1 Servicio de la deuda pública (intereses y gastos)
-
-
-La AUH pertenece a la finalidad función "Seguridad Social" (3.3)
-
 
 
 ```{r datos_presupuesto, echo=FALSE}
@@ -344,6 +295,54 @@ Ahora analizamos la AUH respecto a otras asignaciones familiares financiadas por
 Es interesante ver que las asignaciones familiares a trabajadores activos
 parecen tener una correlacion inversa con la AUH, cuando una sube la otra baja. Y por otro lado vemos que con el correr de los años y la crisis económica la AUH
 termina representando un monto mayor que la asignación familiar a trabajadores activos. 
+
+Para continuar con el análisis vamos a utilizar el clasificador presupuestario por funcion. (llamado finalidad función)
+
+Según el Manual de Clasificaciones Presupuestarias para el Sector Público Nacional (disponible en <https://capacitacion.mecon.gob.ar/manuales_nuevo/Presupuesto-Clasificador13.pdf>), la clasificación funcional presenta el gasto público según la naturaleza de los servicios que las instituciones públicas brindan a la comunidad. Los gastos clasificados por finalidad y función permiten determinar los objetivos generales y los medios a través de los cuales se estiman alcanzar éstos. En estos términos la clasificación por finalidades y funciones se constituye en un instrumento fundamental para la toma de decisiones por el poder político.
+
+La clasificación se divide en dos dígitos: el primero corresponde a la finalidad y el segundo a la función
+
+La lista completa es la siguiente:
+
++ 1 Administración gubernamental
+  - 1.1 Legislativa
+  - 1.2 Judicial
+  - 1.3 Dirección superior ejecutiva
+  - 1.4 Relaciones exteriores
+  - 1.5 Relaciones interiores
+  - 1.6 Administración fiscal
+  - 1.7 Control de la gestión pública
+  - 1.8 Información y estadística básicas
++ 2 Servicios de defensa y seguridad
+  - 2.1 Defensa
+  - 2.2 Seguridad interior
+  - 2.3 Sistema penal
+  - 2.4 Inteligencia
++ 3 Servicios sociales
+  - 3.1 Salud
+  - 3.2 Promoción y asistencia social
+  - 3.3 Seguridad social
+  - 3.4 Educación y cultura
+  - 3.5 Ciencia y técnica
+  - 3.6 Trabajo
+  - 3.7 Vivienda y urbanismo
+  - 3.8 Agua potable y alcantarillado
+  - 3.9 Otros servicios urbanos
++ 4 Servicios económicos
+  - 4.1 Energía, combustibles y minería
+  - 4.2 Comunicaciones
+  - 4.3 Transporte
+  - 4.4 Ecología y medio ambiente
+  - 4.5 Agricultura
+  - 4.6 Industria
+  - 4.7 Comercio, turismo y otros servicios
+  - 4.8 Seguros y finanzas
++ 5 Deuda pública
+  - 5.1 Servicio de la deuda pública (intereses y gastos)
+
+
+La AUH pertenece a la finalidad función "Seguridad Social" (3.3)
+
 
 
 ```{r graficos_presu_3, echo=FALSE}
