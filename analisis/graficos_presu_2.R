@@ -1,16 +1,19 @@
-gasto1 <- gasto_unificado_tidy %>% 
-  ggplot(aes(x=ejercicio_presupuestario, y = Porcentaje)) +
-  geom_line(aes(color=Tipo))+
-  guides(color=guide_legend(ncol=1))
-
-print (gasto1)
+#Graficos de Asignaciones Familiares
 
 flia1 <- gasto_unif_familiares_por_anio %>% 
   ggplot(aes(actividad_desc, porc_sobre_gasto_social)) +
   geom_col(aes(color=actividad_desc, fill=actividad_desc), position=position_dodge(width = 10))+
-  facet_wrap(~ ejercicio_presupuestario, nrow=3)+
-  guides(color=guide_legend(ncol=1))+
-  theme(legend.position = "bottom")
+  facet_wrap(~ ejercicio_presupuestario, nrow=2)+
+  labs(title = "Asignaciones Familiares y AUH en % \n gasto social por anio", x = "Anio", y = "% Gasto Social", fill="Asig. Fam.")+
+  scale_fill_brewer(palette = "Set2")+
+  theme(legend.position = "botton")+
+  theme(axis.text.x = element_blank(), axis.title.x = element_text(size = 12),
+        axis.text.y = element_text(size = 10), axis.title.y = element_text(size = 12),
+        plot.title = element_text(size = 12, face = "bold", color = "darkgreen"))+
+  guides(color=guide_legend(ncol=1))
+
+#guides(color=guide_legend(ncol=1))+
+#geom_col(aes(color=actividad_desc, fill=actividad_desc), position=position_dodge(width = 10))+
 
 print (flia1)
 

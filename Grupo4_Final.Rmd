@@ -183,10 +183,14 @@ IGF entre $118.199,01 y $210.278 | $945 | $1.852 | $2.774 | $3.671 | $3.671
 
 [^2] Valores vigentes a junio 2021 <https://www.anses.gob.ar/asignacion-familiar-por-hijo>
 
-Las diferentes zonas geográficas tienen incremento según tabla de grupos.
-* Zona 1: Neuquén, La Pampa, Río Negro; Departamentos Bermejo, Ramón Lista y Matacos en Formosa; Departamento Las Heras (Distrito Las Cuevas); Departamento Luján de Cuyo(Distrito Potrerillos, Carrizal, Agrelo, Ugarteche, Perdriel, Las Compuertas); Departamento Tupungato (Distritos Santa Clara, Zapata, San José, Anchoris); Departamento Tunuyan (Distrito Los Arboles, Los Chacayes, Campo de los Andes); Departamento San Carlos (Distrito Pareditas); Departamento San Rafael (Distrito Cuadro Benegas); Departamento Malargüe (Distritos Malargüe, Río Grande, Río Barrancas, Agua Escondida) Departamento Maipú (Distritos Rusell, Cruz de Piedra, Lumlunta, Las Barrancas); Departamento Rivadavia (Distritos El Mirador, Los Campamentos, Los Arboles, Reducción, Medrano) en Mendoza; Orán (excepto la cuidad de San Ramon de la Nueva Oran y su ejido urbano) en Salta.
-* Zona 2: Pcia. de Chubut.
-* Zona 3: Departamentos Antofagasta de la Sierra (actividad minera) en Catamarca; Departamentos Cochinoca, Humahuaca, Rinconada, Santa Catalina, Susques, Yavi en Jujuy; Departamentos Los Andes, Santa Victoria, Rivadavia y Grl San Martin (excepto la ciudad de Tartagal y su ejido urbano) en Salta.
+Las diferentes zonas geográficas tienen incremento según tabla de grupos
+
+* Zona 1: Neuquén, La Pampa, Río Negro; Departamentos Bermejo, Ramón Lista y Matacos en Formosa; Departamento Las Heras (Distrito Las Cuevas); Departamento Luján de Cuyo(Distrito Potrerillos, Carrizal, Agrelo, Ugarteche, Perdriel, Las Compuertas); Departamento Tupungato (Distritos Santa Clara, Zapata, San José, Anchoris); Departamento Tunuyan (Distrito Los Arboles, Los Chacayes, Campo de los Andes); Departamento San Carlos (Distrito Pareditas); Departamento San Rafael (Distrito Cuadro Benegas); Departamento Malargüe (Distritos Malargüe, Río Grande, Río Barrancas, Agua Escondida) Departamento Maipú (Distritos Rusell, Cruz de Piedra, Lumlunta, Las Barrancas); Departamento Rivadavia (Distritos El Mirador, Los Campamentos, Los Arboles, Reducción, Medrano) en Mendoza; Orán (excepto la cuidad de San Ramon de la Nueva Oran y su ejido urbano) en Salta
+
+* Zona 2: Pcia. de Chubut
+
+* Zona 3: Departamentos Antofagasta de la Sierra (actividad minera) en Catamarca; Departamentos Cochinoca, Humahuaca, Rinconada, Santa Catalina, Susques, Yavi en Jujuy; Departamentos Los Andes, Santa Victoria, Rivadavia y Grl San Martin (excepto la ciudad de Tartagal y su ejido urbano) en Salta
+
 * Zona 4: Pcias. de Tierra del Fuego, Santa Cruz e Islas del Atlántico Sur
  
  
@@ -215,14 +219,13 @@ ANSES tiene a su cargo la administración de las prestaciones y los servicios de
 Dentro del esquema de programas presupuestarios del ANSES la política que estudiamos se encuentra dentro del Programa 19 “Asignaciones Familiares” cuya Unidad Ejecutora es la “Subdirección Ejecutiva de Prestaciones” 
 
 Este programa tiene a su cargo el pago de:
-* las asignaciones familiares correspondientes a trabajadores en relación de dependencia del sector privado y del Sector Público Nacional, de los beneficiarios de la Ley sobre Riesgos de Trabajo, del Seguro de Desempleo y del Sistema Integrado Previsional Argentino, según lo dispuesto por la Ley Nº 24.714 y sus modificatorias
-* las asignaciones universales por hijo y embarazo que por los Decretos Nº 1.602/09 y Nº 446/11 se incorporan como inciso c) del art.1º de la citada Ley. Se incluyen también las asignaciones familiares derivadas de los beneficios de la Pensión Universal para el Adulto Mayor; de Pensiones no Contributivas y las de inscriptos al monotributo
 
-Con el objetivo de dotar de transparencia a la gestión presupuestaria, la información se discrimina en los Subprogramas:
-* 01-Asignaciones Familiares Activos
-* 02-Asignaciones Familiares Pasivos
-* 03- Asignación Universal para Protección Social
-* 04-Asignaciones Familiares Sector Público Nacional
+* las asignaciones familiares correspondientes a trabajadores en relación de dependencia del sector privado y del Sector Público Nacional, de los beneficiarios de la Ley sobre Riesgos de Trabajo, del Seguro de Desempleo y del Sistema Integrado Previsional Argentino, según lo dispuesto por la Ley Nº 24.714 y sus modificatorias
+
+* las asignaciones universales por hijo y embarazo que por los Decretos Nº 1.602/09 y Nº 446/11 se incorporan como inciso c) del art.1º de la citada Ley.
+
+* Se incluyen también las asignaciones familiares derivadas de los beneficios de la Pensión Universal para el Adulto Mayor; de Pensiones no Contributivas y las de inscriptos al monotributo
+
 
 Los montos asignados en la ley de Presupuesto, así como la descripción de la política y sus metas físicas estimadas para cada año, se encuentran detallados en <https://www.economia.gob.ar/onp/presupuestos/2021>
 
@@ -254,40 +257,40 @@ La clasificación se divide en dos dígitos: el primero corresponde a la finalid
 La lista completa es la siguiente:
 
 + 1 Administración gubernamental
-- 1.1 Legislativa
-- 1.2 Judicial
-- 1.3 Dirección superior ejecutiva
-- 1.4 Relaciones exteriores
-- 1.5 Relaciones interiores
-- 1.6 Administración fiscal
-- 1.7 Control de la gestión pública
-- 1.8 Información y estadística básicas
+  - 1.1 Legislativa
+  - 1.2 Judicial
+  - 1.3 Dirección superior ejecutiva
+  - 1.4 Relaciones exteriores
+  - 1.5 Relaciones interiores
+  - 1.6 Administración fiscal
+  - 1.7 Control de la gestión pública
+  - 1.8 Información y estadística básicas
 + 2 Servicios de defensa y seguridad
-- 2.1 Defensa
-- 2.2 Seguridad interior
-- 2.3 Sistema penal
-- 2.4 Inteligencia
+  - 2.1 Defensa
+  - 2.2 Seguridad interior
+  - 2.3 Sistema penal
+  - 2.4 Inteligencia
 + 3 Servicios sociales
-- 3.1 Salud
-- 3.2 Promoción y asistencia social
-- 3.3 Seguridad social
-- 3.4 Educación y cultura
-- 3.5 Ciencia y técnica
-- 3.6 Trabajo
-- 3.7 Vivienda y urbanismo
-- 3.8 Agua potable y alcantarillado
-- 3.9 Otros servicios urbanos
+  - 3.1 Salud
+  - 3.2 Promoción y asistencia social
+  - 3.3 Seguridad social
+  - 3.4 Educación y cultura
+  - 3.5 Ciencia y técnica
+  - 3.6 Trabajo
+  - 3.7 Vivienda y urbanismo
+  - 3.8 Agua potable y alcantarillado
+  - 3.9 Otros servicios urbanos
 + 4 Servicios económicos
-- 4.1 Energía, combustibles y minería
-- 4.2 Comunicaciones
-- 4.3 Transporte
-- 4.4 Ecología y medio ambiente
-- 4.5 Agricultura
-- 4.6 Industria
-- 4.7 Comercio, turismo y otros servicios
-- 4.8 Seguros y finanzas
+  - 4.1 Energía, combustibles y minería
+  - 4.2 Comunicaciones
+  - 4.3 Transporte
+  - 4.4 Ecología y medio ambiente
+  - 4.5 Agricultura
+  - 4.6 Industria
+  - 4.7 Comercio, turismo y otros servicios
+  - 4.8 Seguros y finanzas
 + 5 Deuda pública
-- 5.1 Servicio de la deuda pública (intereses y gastos)
+  - 5.1 Servicio de la deuda pública (intereses y gastos)
 
 
 La AUH pertenece a la finalidad función "Seguridad Social" (3.3)
@@ -300,14 +303,39 @@ La AUH pertenece a la finalidad función "Seguridad Social" (3.3)
 
 Vamos a analizar gráficamente la evolución de la AUH como porcentaje del PBI, del Gasto Total y del Gasto Social
 
+Veremos en estos gráficos que la participación de la AUH en estos indicadores es
+fluctuante y acompaña los períodos de la economía, en los años de crisis el porcentaje sube y viceversa
+
+
 ```{r graficos_presu_1, echo=FALSE}
  source(".\\analisis\\graficos_presu_1.R", local = knitr::knit_global())
 ```
 
-Como vemos en estos gráficos la participación de la AUH en estos indicadores es
-fluctuante y acompaña los períodos de la economía, en los años de crisis el porcentaje sube y viceversa
+En este último gráfico analizamos el gasto social y la AUH respecto a los demas indicadores. 
+Asi vemos la importancia que tiene el gasto social sobre el gasto total (representa alrededor de un 60% del mismo), el % del gasto total sobre el PBI (un poco mas que 20%) y en consecuencia vemos que el gasto social contenido en el Presupuesto Nacional representa un poco mas del 10% del PBI. 
 
-Ahora analizamos la AUH respecto a otras asignaciones familiares
+Es relevante recordar que el Presupuesto Nacional no representa todo el Sector Público Nacional sino solo lo contemplado dentro de la Ley de Presupuesto. 
+
+Lo vemos en este cuadro
+
+![](Alcance_presupuesto.JPG)
+
+Para mas información acerca del alcance del Presupuesto consultar en
+<https://www.presupuestoabierto.gob.ar/sici/que-incluye>
+
+
+Ahora analizamos la AUH respecto a otras asignaciones familiares financiadas por ANSES:
+
+* Asignaciones Familiares Activos
+
+* Asignaciones Familiares Sector Publico Nacional
+
+* Asignaciones Familiares Monotributistas
+
+* Asignaciones Familiares Pasivos
+
+* Asignaciones Familiares Pension Universal
+
 
 ```{r graficos_presu_2, echo=FALSE}
  source(".\\analisis\\graficos_presu_2.R", local = knitr::knit_global())
