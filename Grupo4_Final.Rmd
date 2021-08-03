@@ -290,13 +290,13 @@ Ahora analizamos la AUH respecto a otras asignaciones familiares financiadas por
 
 * Asignaciones Familiares Activos
 
-* Asignaciones Familiares Sector Publico Nacional
+* Asignaciones Familiares Sector Público Nacional
 
 * Asignaciones Familiares Monotributistas
 
 * Asignaciones Familiares Pasivos
 
-* Asignaciones Familiares Pension Universal
+* Asignaciones Familiares Pensión Universal
 
 
 ```{r graficos_presu_2, echo=FALSE}
@@ -307,9 +307,9 @@ Es interesante ver que las asignaciones familiares a trabajadores activos
 parecen tener una correlacion inversa con la AUH, cuando una sube la otra baja. Y por otro lado vemos que con el correr de los años y la crisis económica la AUH
 termina representando un monto mayor que la asignación familiar a trabajadores activos. 
 
-### Analisis de la AUH respecto al Gasto Social financiado por el Presupuesto Nacional
+### Análisis de la AUH respecto al Gasto Social financiado por el Presupuesto Nacional
 
-Para continuar con el análisis vamos a utilizar el clasificador presupuestario por funcion. (llamado finalidad función)
+Para continuar con el análisis vamos a utilizar el clasificador presupuestario por función. (llamado finalidad función)
 
 Según el Manual de Clasificaciones Presupuestarias para el Sector Público Nacional (disponible en <https://capacitacion.mecon.gob.ar/manuales_nuevo/Presupuesto-Clasificador13.pdf>), la clasificación funcional presenta el gasto público según la naturaleza de los servicios que las instituciones públicas brindan a la comunidad. Los gastos clasificados por finalidad y función permiten determinar los objetivos generales y los medios a través de los cuales se estiman alcanzar éstos. En estos términos la clasificación por finalidades y funciones se constituye en un instrumento fundamental para la toma de decisiones por el poder político.
 
