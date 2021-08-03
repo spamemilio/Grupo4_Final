@@ -184,12 +184,6 @@ gasto_unif_familiares_por_anio$porc_sobre_PIB <- gasto_unif_familiares_por_anio$
 
 summary (gasto_unificado_por_anio)
 
-gasto_unificado_porcentajes <- 
-  gasto_unificado_por_anio %>% 
-  select (c(ejercicio_presupuestario, auh_sobre_PIB, auh_sobre_gasto_total, auh_sobre_gasto_social, gasto_social_sobre_PIB, gasto_social_sobre_gasto_total, gasto_total_sobre_PIB)) 
-
-gasto_unificado_tidy <- gasto_unificado_porcentajes %>% 
-    pivot_longer(cols = -ejercicio_presupuestario, names_to = "Tipo", values_to = "Porcentaje")
 
 
 #Mas analisis, ahora comparando la finalidad funcion Seguridad Social con las otras pertenecientes a Gasto Social

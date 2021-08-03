@@ -26,9 +26,9 @@ knitr::opts_chunk$set(
 
 Desde su implementación, la Asignación Universal Por Hijo (llamada también Asignación Universal para Protección Social) ha sido una política pública que pretende fortalecer la protección social de sectores que están marginados de otras políticas por carecer de empleo o pertenecer a población con empleo informal o inestable. 
 
-Este estudio pretende realizar un analisis reproducible de dicha política pública tanto desde el punto de vista de su asignación presupuestaria asi como la caracterización de sus beneficiarios
+Este estudio pretende realizar un análisis reproducible de dicha política pública tanto desde el punto de vista de su asignación presupuestaria así como la caracterización de sus beneficiarios
 
-El caracter de reproducible está dado a partir de que para su realización se utilizarán datos abiertos que son publicados por distintos organismos públicos. 
+El carácter de reproducible está dado a partir de que para su realización se utilizarán datos abiertos que son publicados por distintos organismos públicos. 
 
 ## Datasets utilizados
 
@@ -82,13 +82,13 @@ Los padres deben ser argentinos, residir en el país y tener DNI. Si son extranj
 
 * Personas desocupadas
 
-* Trabajadores en la economía informal con ingresos iguales o inferiores al salario mínimo, vital y móvil; que hoy es de $ 25.920
+* Trabajadores en la economía informal con ingresos iguales o inferiores al   salario mínimo, vital y móvil; que hoy es de $ 25.920
 
 * Monotributistas sociales
 
 * Trabajadores del servicio doméstico
 
-* Quienes perciban alguno de los siguientes planes: Hacemos Futuro, Manos a la Obra  y los programas del Ministerio de Trabajo.
+* Quienes perciban alguno de los siguientes planes: Hacemos Futuro, Manos a la  Obra  y los programas del Ministerio de Trabajo.
  
 Con esta inclusión se pretendió alcanzar la universalidad contemplando a todos los niños por igual. 
 
@@ -164,7 +164,7 @@ Para el pago de estas asignaciones se toma en cuenta el “Ingreso del Grupo Fam
 * más Planes Sociales
 * más las sumas originadas en Prestaciones Contributivas y/o No Contributivas de cualquier índole
 
- Si un integrante del grupo familiar percibe un importe bruto superior a Pesos ciento cinco mil ,ciento treinta y nueve ($ 105.139.-), se excluye del cobro de asignaciones familiares al grupo familiar.[^2]
+ Si un integrante del grupo familiar percibe un importe bruto superior a Pesos ciento cinco mil ciento treinta y nueve ($ 105.139.-), se excluye del cobro de asignaciones familiares al grupo familiar.[^2]
 
 Topes de Ingreso del Grupo Familiar Vigentes - Resolución ANSES Nº 51/21
 
@@ -185,7 +185,7 @@ IGF entre $118.199,01 y $210.278 | $945 | $1.852 | $2.774 | $3.671 | $3.671
 
 Las diferentes zonas geográficas tienen incremento según tabla de grupos
 
-* Zona 1: Neuquén, La Pampa, Río Negro; Departamentos Bermejo, Ramón Lista y Matacos en Formosa; Departamento Las Heras (Distrito Las Cuevas); Departamento Luján de Cuyo(Distrito Potrerillos, Carrizal, Agrelo, Ugarteche, Perdriel, Las Compuertas); Departamento Tupungato (Distritos Santa Clara, Zapata, San José, Anchoris); Departamento Tunuyan (Distrito Los Arboles, Los Chacayes, Campo de los Andes); Departamento San Carlos (Distrito Pareditas); Departamento San Rafael (Distrito Cuadro Benegas); Departamento Malargüe (Distritos Malargüe, Río Grande, Río Barrancas, Agua Escondida) Departamento Maipú (Distritos Rusell, Cruz de Piedra, Lumlunta, Las Barrancas); Departamento Rivadavia (Distritos El Mirador, Los Campamentos, Los Arboles, Reducción, Medrano) en Mendoza; Orán (excepto la cuidad de San Ramon de la Nueva Oran y su ejido urbano) en Salta
+* Zona 1: Neuquén, La Pampa, Río Negro; Departamentos Bermejo, Ramón Lista y Matacos en Formosa; Departamento Las Heras (Distrito Las Cuevas); Departamento Luján de Cuyo(Distrito Potrerillos, Carrizal, Agrelo, Ugarteche, Perdriel, Las Compuertas); Departamento Tupungato (Distritos Santa Clara, Zapata, San José, Anchoris); Departamento Tunuyan (Distrito Los Arboles, Los Chacayes, Campo de los Andes); Departamento San Carlos (Distrito Pareditas); Departamento San Rafael (Distrito Cuadro Benegas); Departamento Malargüe (Distritos Malargüe, Río Grande, Río Barrancas, Agua Escondida) Departamento Maipú (Distritos Rusell, Cruz de Piedra, Lumlunta, Las Barrancas); Departamento Rivadavia (Distritos El Mirador, Los Campamentos, Los Arboles, Reducción, Medrano) en Mendoza; Orán (excepto la ciudad de San Ramon de la Nueva Oran y su ejido urbano) en Salta
 
 * Zona 2: Pcia. de Chubut
 
@@ -209,12 +209,12 @@ Hijo con discapacidad | $ 14677 | $ 10381 | $ 6552 | $ 6552 | $ 6552
 
 ### Enfoque presupuestario
 
-La asignación universal por hijo (identificada en el preswupuesto como  asignación universal para protección social) es una política que, si bien se extiende a todo el país, es financiada íntegramente por el Estado Nacional. 
+La asignación universal por hijo (identificada en el presupuesto como  asignación universal para protección social) es una política que, si bien se extiende a todo el país, es financiada íntegramente por el Estado Nacional. 
 Los fondos destinados para su ejecución están incluidos anualmente en la Ley de Presupuesto, la cual es sancionada por el Congreso Nacional generalmente en los meses de diciembre de cada año. 
 El organismo que se encarga de la formulación y ejecución de esta política es la Administración Nacional de Seguridad Social (ANSES). 
 Este organismo fue creado en 1991 a través del Decreto N° 2.741/91, es un organismo descentralizado que desarrolla sus funciones en el ámbito del Ministerio de Trabajo, Empleo y Seguridad Social (MTESS). 
-Sin embargo durante parte del periodo estudiado la ANSES depende del Ministerio de Desarrollo Social debido a la transformación del Ministerio de Trabajo en la Secretaría de Gobierno de Trabajo que dependía del Ministerio de Desarrollo Social. 
-ANSES tiene a su cargo la administración de las prestaciones y los servicios de la Seguridad Social en la República Argentina. Asimismo desde la vigencia del Decreto N° 897/07 ANSeS es responsable de la administración del Fondo de Garantía de Sustentabilidad (FGS) del Sistema Integrado Previsional Argentino (SIPA). 
+Sin embargo, durante parte del periodo estudiado la ANSES depende del Ministerio de Desarrollo Social debido a la transformación del Ministerio de Trabajo en la Secretaría de Gobierno de Trabajo que dependía del Ministerio de Desarrollo Social. 
+ANSES tiene a su cargo la administración de las prestaciones y los servicios de la Seguridad Social en la República Argentina. Asimismo, desde la vigencia del Decreto N° 897/07 ANSeS es responsable de la administración del Fondo de Garantía de Sustentabilidad (FGS) del Sistema Integrado Previsional Argentino (SIPA). 
 
 Dentro del esquema de programas presupuestarios del ANSES la política que estudiamos se encuentra dentro del Programa 19 “Asignaciones Familiares” cuya Unidad Ejecutora es la “Subdirección Ejecutiva de Prestaciones” 
 
@@ -234,9 +234,9 @@ La ejecución presupuestaria se puede seguir en el sitio Presupuesto Abierto <ht
 
 ## Análisis Presupuestario
 
-Para poder efectuar una comparación interanual de asignaciones presupuestarias es necesario encontrar una unidad de medida que permita dejar de lado el componente inflacionario que esta presente en la economía argentina. 
+Para poder efectuar una comparación interanual de asignaciones presupuestarias es necesario encontrar una unidad de medida que permita dejar de lado el componente inflacionario que está presente en la economía argentina. 
 
-La forma que elegimos es analizar desde el punto de vista de porcentaje de participacion sobre distintos conceptos de la economía.
+La forma que elegimos es analizar desde el punto de vista de porcentaje de participación sobre distintos conceptos de la economía.
 
 En nuestro caso vamos a utilizar estos totalizadores:
 
@@ -259,12 +259,17 @@ Veremos en estos gráficos que la participación de la AUH en estos indicadores 
 fluctuante y acompaña los períodos de la economía, en los años de crisis el porcentaje sube y viceversa
 
 
-```{r graficos_presu_1, echo=FALSE}
+```{r graficos_presu_1, echo=FALSE, fig.dim = c(2, 2)}
  source(".\\analisis\\graficos_presu_1.R", local = knitr::knit_global())
 ```
 
-En este último gráfico analizamos el gasto social y la AUH respecto a los demas indicadores. 
-Asi vemos la importancia que tiene el gasto social sobre el gasto total (representa alrededor de un 60% del mismo), el % del gasto total sobre el PBI (un poco mas que 20%) y en consecuencia vemos que el gasto social contenido en el Presupuesto Nacional representa un poco mas del 10% del PBI. 
+```{r graficos_presu_11, echo=FALSE}
+ source(".\\analisis\\graficos_presu_11.R", local = knitr::knit_global())
+```
+
+
+En este último gráfico analizamos el gasto social y la AUH respecto a los demás indicadores. 
+Así vemos la importancia que tiene el gasto social sobre el gasto total (representa alrededor de un 60% del mismo), el % del gasto total sobre el PBI (un poco más que 20%) y en consecuencia vemos que el gasto social contenido en el Presupuesto Nacional representa un poco más del 10% del PBI. 
 
 
 #### Alcance del Presupuesto Nacional
@@ -275,7 +280,7 @@ Lo vemos en este cuadro
 
 ![](Alcance_presupuesto.JPG)
 
-Para mas información acerca del alcance del Presupuesto consultar en
+Para más información acerca del alcance del Presupuesto consultar en
 <https://www.presupuestoabierto.gob.ar/sici/que-incluye>
 
 
@@ -373,7 +378,7 @@ El mismo análisis pero dejando solo AUH en lugar de todas las asignaciones fami
  source(".\\analisis\\graficos_presu_5.R", local = knitr::knit_global())
 ```
 
-Como vemos la AUH es casi la única función que ha ido creciendo en su peso respecto al gasto social. La mayoría de las demas funciones han decaído salvo algunas que se mantienen relativamente constantes. 
+Como vemos la AUH es casi la única función que ha ido creciendo en su peso respecto al gasto social. La mayoría de las demás funciones han decaído salvo algunas que se mantienen relativamente constantes. 
 
 Por último, vamos a graficar cómo ha sido, en promedio la participación de las asignaciones familiares y de la AUH respecto a las demás funciones del gasto social a lo largo de los años del análisis
 
@@ -391,6 +396,7 @@ Presentamos dos gráficos, uno con todas las asignaciones familiares y otro solo
 
 
 Aquí vemos el dataset de Anses desagregado. La principal línea es la cantidad de niños y niñas. En segundo lugar se encuentra la suma de Asignaciones Familiares y AUH. Por último la tercera línea son las jubilaciones y pensiones
+
 ```{r grafico_prestaciones_desagredadas, echo=FALSE}
 print(grafico_prestaciones_desagredadas)
 ```
