@@ -1,9 +1,5 @@
 #Ahora dejamos solo la parte de asignaciones familiares en la fin fun 3.3
 #Hacemos el mismo analisis pero solo la AUH en lugar de todas las asignaciones
-leyenda = "Ahora dejamos solo AUH en lugar de todas las asignaciones faamiliares"
-print (leyenda)
-
-
 
 auh_por_anio_sobre_gasto_total <- 
   gasto_unif_familiares_por_anio %>% 
@@ -19,8 +15,14 @@ funcion_unificado_sin_seguridad_solo_auh <- rbind(funcion_unificado_sin_segurida
 soloauh <- funcion_unificado_sin_seguridad_solo_auh %>% 
   ggplot(aes(x=ejercicio_presupuestario, y = porc_sobre_gasto_total)) +
   geom_line(aes(color=funcion_desc))+
-  guides(color=guide_legend(ncol=1))+
-  theme(legend.position = "bottom")
+  labs(title = "Evolucion anual de AUH y Otras Funciones Sociales \n (Sin Jubilaciones y Pensiones ni Asignaciones Fliares) \n en % del Gasto Total", x = "Anio", y = "% Gasto Total", color = "Funcion")+
+  scale_color_brewer(palette = "Set2")+
+  guides(color=guide_legend(nrow=4))+
+  theme(axis.text.x = element_blank(), axis.title.x = element_text(size = 12),
+        axis.text.y = element_text(size = 7), axis.title.y = element_text(size = 12),
+        plot.title = element_text(size = 12),
+        legend.position="bottom")
+
 
 print(soloauh)
 

@@ -185,6 +185,16 @@ gasto_unif_familiares_por_anio$porc_sobre_PIB <- gasto_unif_familiares_por_anio$
 summary (gasto_unificado_por_anio)
 
 
+gasto_unif_familiares_por_anio$actividad_desc = str_replace(gasto_unif_familiares_por_anio$actividad_desc, "Asignaciones Familiares Activos","Activos")
+gasto_unif_familiares_por_anio$actividad_desc = str_replace(gasto_unif_familiares_por_anio$actividad_desc, "Asignaciones Familiares Sector Publico Nacional","Sector Publico")
+gasto_unif_familiares_por_anio$actividad_desc = str_replace(gasto_unif_familiares_por_anio$actividad_desc, "Asignaciones Familiares Monotributistas","Monotributistas")
+gasto_unif_familiares_por_anio$actividad_desc = str_replace(gasto_unif_familiares_por_anio$actividad_desc, "Asignaciones Familiares Pasivos","Pasivos")
+gasto_unif_familiares_por_anio$actividad_desc = str_replace(gasto_unif_familiares_por_anio$actividad_desc, "Asignaciones Familiares Pension Universal","Pension Univ")
+
+
+#gasto_unif_familiares_por_anio <- 
+#  gasto_unif_familiares_por_anio %>% 
+#  mutate(actividad_desc=map_chr(actividad_desc, achica_descripcion))
 
 #Mas analisis, ahora comparando la finalidad funcion Seguridad Social con las otras pertenecientes a Gasto Social
 #Genero analisis de servicios sociales por anio

@@ -289,17 +289,12 @@ Para más información acerca del alcance del Presupuesto consultar en
 Ahora analizamos la AUH respecto a otras asignaciones familiares financiadas por ANSES:
 
 * Asignaciones Familiares Activos
-
 * Asignaciones Familiares Sector Público Nacional
-
 * Asignaciones Familiares Monotributistas
-
 * Asignaciones Familiares Pasivos
-
 * Asignaciones Familiares Pensión Universal
 
-
-```{r graficos_presu_2, echo=FALSE}
+```{r graficos_presu_2, echo=FALSE, out.width="80%"  }
  source(".\\analisis\\graficos_presu_2.R", local = knitr::knit_global())
 ```
 

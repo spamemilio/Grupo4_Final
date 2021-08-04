@@ -1,13 +1,14 @@
-leyenda = "Mas analisis, ahora comparando la finalidad funcion Seguridad Social con las otras pertenecientes a Gasto Social"
-print(leyenda)
-
-
 
 unif1 <- funcion_unificado_por_anio %>% 
   ggplot(aes(x=ejercicio_presupuestario, y = porc_sobre_gasto_total)) +
   geom_line(aes(color=funcion_desc))+
-  guides(color=guide_legend(ncol=1))+
-  theme(legend.position = "bottom")
+  labs(title = "Evolucion anual de Servicios Sociales \n en % del Gasto Total", x = "Anio", y = "% Gasto Total", color = "Funcion")+
+  scale_color_brewer(palette = "Set2")+
+  guides(color=guide_legend(nrow=4))+
+  theme(axis.text.x = element_blank(), axis.title.x = element_text(size = 12),
+        axis.text.y = element_text(size = 7), axis.title.y = element_text(size = 12),
+        plot.title = element_text(size = 12),
+        legend.position="bottom")
 
 print(unif1)
 
