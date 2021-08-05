@@ -10,42 +10,6 @@ prestaciones_previsionales_sipa_por_tipo <- read_csv("data/prestaciones-previsio
   filter(year(indice_tiempo) %in% c(2013:2020))
 
 
-prestaciones_por_familia <- read_excel("data/H.2.3.Total Pais. Titulares de la AUH. Hijo e Hijo Discapacitado, segun hijos a cargo.xlsx", 
-              col_types = c("date", "numeric", "numeric", 
-                            "numeric", "numeric", "numeric", 
-                            "numeric"), skip = 3) %>% 
-  rename( Fecha = '...1',
-          Total = '...7') %>% 
-  mutate( `1` = `1` / Total,
-          `2` = `2` / Total,
-          `3` = `3` / Total,
-          `4` = `4` / Total,
-          `5` = `5` / Total)
-  
-  glimpse(prestaciones_por_familia)
-
-prestaciones_por_familia_tidy <- prestaciones_por_familia %>% 
-  pivot_longer(cols=-c("Fecha"), names_to = "cantidad_hijes", values_to = "cantidad") %>% 
-  filter(cantidad_hijes != "Total")
-grafico_prestaciones_por_familia <- 
-prestaciones_por_familia_tidy %>% 
-ggplot(aes(x=Fecha, y=cantidad))+
-  geom_area(aes(fill=cantidad_hijes))
-  
-prestaciones_por_familia_tidy_min <- 
-prestaciones_por_familia_tidy %>% 
-  filter(Fecha== min(Fecha, na.rm = TRUE ) ) %>% 
-  select(cantidad_hijes,cantidad)%>% 
-  rename(cantidad_min = cantidad)
-
-prestaciones_por_familia_tidy_dif <- 
-  prestaciones_por_familia_tidy %>% 
-  filter(Fecha== max(Fecha, na.rm = TRUE ) ) %>% 
-  select(cantidad_hijes,cantidad) %>% 
-  rename(cantidad_max = cantidad) %>% 
-  left_join(prestaciones_por_familia_tidy_min) %>% 
-  mutate(cantidad_dif = cantidad_max - cantidad_min)
-
 prestaciones_tidy <- prestaciones_previsionales_sipa_por_tipo %>% 
   pivot_longer(cols = -ends_with("indice_tiempo"), names_to  = "prestacion", values_to ="cantidad" ) 
 
@@ -169,4 +133,55 @@ poblacion_por_sexo_edad <-  read_excel("data/c1_proyecciones_nac_2010_2040.xls",
     ggplot(aes(x=total_aaff,y=total_auh)) +
     geom_point(aes(color=anio))+
     scale_color_brewer(palette="Dark2")
+  
+  
+  # Prestaciones por titular 
+  prestaciones_por_familia <- read_excel("data/H.2.3.Total Pais. Titulares de la AUH. Hijo e Hijo Discapacitado, segun hijos a cargo.xlsx", 
+                                         col_types = c("date", "numeric", "numeric", 
+                                                       "numeric", "numeric", "numeric", 
+                                                       "numeric"), skip = 3) %>% 
+    rename( Fecha = '...1',
+            Total = '...7') %>% 
+    mutate( `1` = `1` / Total,
+            `2` = `2` / Total,
+            `3` = `3` / Total,
+            `4` = `4` / Total,
+            `5` = `5` / Total)
+  
+  glimpse(prestaciones_por_familia)
+  
+  prestaciones_por_familia_tidy <- prestaciones_por_familia %>% 
+    pivot_longer(cols=-c("Fecha"), names_to = "cantidad_hijes", values_to = "cantidad") %>% 
+    filter(cantidad_hijes != "Total")
+  grafico_prestaciones_por_familia <- 
+    prestaciones_por_familia_tidy %>% 
+    ggplot(aes(x=Fecha, y=cantidad))+
+    geom_area(aes(fill=cantidad_hijes))
+  
+  prestaciones_por_familia_tidy_min <- 
+    prestaciones_por_familia_tidy %>% 
+    filter(Fecha== min(Fecha, na.rm = TRUE ) ) %>% 
+    select(cantidad_hijes,cantidad)%>% 
+    rename(cantidad_min = cantidad)
+  
+  prestaciones_por_familia_tidy_dif <- 
+    prestaciones_por_familia_tidy %>% 
+    filter(Fecha== max(Fecha, na.rm = TRUE ) ) %>% 
+    select(cantidad_hijes,cantidad) %>% 
+    rename(cantidad_max = cantidad) %>% 
+    left_join(prestaciones_por_familia_tidy_min) %>% 
+    mutate(cantidad_dif = cantidad_max - cantidad_min)
+  
+# Prestaciones por rango de edad
+  prestaciones_edad <- 
+  read_excel("data/H.2.2.Total Pais. Titulares de la AUH. Hijo e Hijo Discapacitado por sexo y grupo de edad.xlsx", 
+             skip = 3) %>% 
+    rename(Fecha = `...1`) %>% 
+    filter(!is.na(as.numeric(Fecha))) %>% 
+    mutate(Fecha=as.double(Fecha)-(70*365)-19) %>%
+    mutate(Fecha=as_date(Fecha,origin = lubridate::origin))
+  
+  as_date(41791,x = )
+  
+  glimpse(prestaciones_edad)
   
