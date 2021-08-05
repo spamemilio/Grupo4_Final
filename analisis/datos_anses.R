@@ -15,16 +15,36 @@ prestaciones_por_familia <- read_excel("data/H.2.3.Total Pais. Titulares de la A
                             "numeric", "numeric", "numeric", 
                             "numeric"), skip = 3) %>% 
   rename( Fecha = '...1',
-          Total = '...7')
+          Total = '...7') %>% 
+  mutate( `1` = `1` / Total,
+          `2` = `2` / Total,
+          `3` = `3` / Total,
+          `4` = `4` / Total,
+          `5` = `5` / Total)
+  
+  glimpse(prestaciones_por_familia)
 
 prestaciones_por_familia_tidy <- prestaciones_por_familia %>% 
   pivot_longer(cols=-c("Fecha"), names_to = "cantidad_hijes", values_to = "cantidad") %>% 
   filter(cantidad_hijes != "Total")
-
+grafico_prestaciones_por_familia <- 
 prestaciones_por_familia_tidy %>% 
 ggplot(aes(x=Fecha, y=cantidad))+
   geom_area(aes(fill=cantidad_hijes))
   
+prestaciones_por_familia_tidy_min <- 
+prestaciones_por_familia_tidy %>% 
+  filter(Fecha== min(Fecha, na.rm = TRUE ) ) %>% 
+  select(cantidad_hijes,cantidad)%>% 
+  rename(cantidad_min = cantidad)
+
+prestaciones_por_familia_tidy_dif <- 
+  prestaciones_por_familia_tidy %>% 
+  filter(Fecha== max(Fecha, na.rm = TRUE ) ) %>% 
+  select(cantidad_hijes,cantidad) %>% 
+  rename(cantidad_max = cantidad) %>% 
+  left_join(prestaciones_por_familia_tidy_min) %>% 
+  mutate(cantidad_dif = cantidad_max - cantidad_min)
 
 prestaciones_tidy <- prestaciones_previsionales_sipa_por_tipo %>% 
   pivot_longer(cols = -ends_with("indice_tiempo"), names_to  = "prestacion", values_to ="cantidad" ) 
