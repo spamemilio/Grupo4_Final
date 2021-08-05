@@ -9,6 +9,23 @@ options(scipen = 100)
 prestaciones_previsionales_sipa_por_tipo <- read_csv("data/prestaciones-previsionales-sipa-por-tipo.csv") %>% 
   filter(year(indice_tiempo) %in% c(2013:2020))
 
+
+prestaciones_por_familia <- read_excel("data/H.2.3.Total Pais. Titulares de la AUH. Hijo e Hijo Discapacitado, segun hijos a cargo.xlsx", 
+              col_types = c("date", "numeric", "numeric", 
+                            "numeric", "numeric", "numeric", 
+                            "numeric"), skip = 3) %>% 
+  rename( Fecha = '...1',
+          Total = '...7')
+
+prestaciones_por_familia_tidy <- prestaciones_por_familia %>% 
+  pivot_longer(cols=-c("Fecha"), names_to = "cantidad_hijes", values_to = "cantidad") %>% 
+  filter(cantidad_hijes != "Total")
+
+prestaciones_por_familia_tidy %>% 
+ggplot(aes(x=Fecha, y=cantidad))+
+  geom_area(aes(fill=cantidad_hijes))
+  
+
 prestaciones_tidy <- prestaciones_previsionales_sipa_por_tipo %>% 
   pivot_longer(cols = -ends_with("indice_tiempo"), names_to  = "prestacion", values_to ="cantidad" ) 
 
