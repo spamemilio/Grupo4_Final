@@ -21,6 +21,7 @@ burflia <- ggplot() +
   scale_size_continuous(range = c(1,4)) +
   labs(title = "Relacion entre asignaciones familiares \n y otros gastos \n sociales (sin Seg. Social)")+
   scale_fill_brewer(palette = "Set2")+
+  scale_color_brewer(palette = "Set2")+
   theme_void() + 
   theme(legend.position="none") +
   coord_equal()
@@ -47,6 +48,9 @@ bur_auh <- ggplot() +
   scale_fill_manual(values = magma(nrow(data))) +
   geom_text(data = data, aes(x, y, size=porc_sobre_gasto_total, label = funcion_desc)) +
   scale_size_continuous(range = c(1,4)) +
+  labs(title = "Relacion entre AUH \n y otros gastos sociales \n (sin Seg. Social y otras asignaciones)")+
+  scale_fill_brewer(palette = "Set2")+
+  scale_color_brewer(palette = "Set2")+
   theme_void() + 
   theme(legend.position="none") +
   coord_equal()

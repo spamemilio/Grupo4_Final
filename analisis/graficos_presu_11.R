@@ -16,6 +16,7 @@ gasto1 <- gasto_unificado_tidy %>%
   theme(axis.text.x = element_text(size = 8), axis.title.x = element_blank(),
         axis.text.y = element_text(size = 8), axis.title.y = element_text(size = 8),
         plot.title = element_text(size = 12),
-        legend.position="left")
+        legend.position="left")+
+  scale_color_brewer(palette = "Set2")
 
 print (gasto1)

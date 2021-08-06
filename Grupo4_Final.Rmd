@@ -374,6 +374,7 @@ El mismo análisis pero dejando solo AUH en lugar de todas las asignaciones fami
 ```
 
 Como vemos la AUH es casi la única función que ha ido creciendo en su peso respecto al gasto social. La mayoría de las demás funciones han decaído salvo algunas que se mantienen relativamente constantes. 
+En 2020, debido a la pandemia, se incrementaron los gastos en Salud 
 
 Por último, vamos a graficar cómo ha sido, en promedio la participación de las asignaciones familiares y de la AUH respecto a las demás funciones del gasto social a lo largo de los años del análisis
 
@@ -382,6 +383,8 @@ Presentamos dos gráficos, uno con todas las asignaciones familiares y otro solo
 ```{r graficos_presu_6, echo=FALSE}
  source(".\\analisis\\graficos_presu_6.R", local = knitr::knit_global())
 ```
+
+
 
 ### Análisis Datos ANSES
 

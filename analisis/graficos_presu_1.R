@@ -9,18 +9,21 @@ auh1 <- gasto_unificado_por_anio %>%
        x = "Anio")+
   theme(axis.text.x = element_text(size = 7), axis.title.x = element_blank(),
         axis.text.y = element_text(size = 7), axis.title.y = element_text(size = 8),
-        plot.title = element_blank())
+        plot.title = element_blank())+
+  scale_color_brewer(palette = "Set2")
+
 print (auh1)
 
 auh2 <- gasto_unificado_por_anio %>% 
   ggplot(aes(x=ejercicio_presupuestario,y=auh_sobre_gasto_total))+
-  geom_line (color="Red")+
+  geom_line ()+
   labs(title="Evolucion anual de AUH como % del Gasto Total",
        y="% Auh sobre Gasto",
        x = "Anio")+
   theme(axis.text.x = element_text(size = 7), axis.title.x = element_blank(),
         axis.text.y = element_text(size = 7), axis.title.y = element_text(size = 8),
-        plot.title = element_blank())
+        plot.title = element_blank())+
+  scale_color_brewer(palette = "Set2")
 
 print (auh2) 
 
@@ -32,7 +35,8 @@ auh3 <- gasto_unificado_por_anio %>%
        x = "Anio")+
   theme(axis.text.x = element_text(size = 7), axis.title.x = element_blank(),
         axis.text.y = element_text(size = 7), axis.title.y = element_text(size = 8),
-        plot.title = element_blank())
+        plot.title = element_blank())+
+  scale_color_brewer(palette = "Set2")
 
 
 print (auh3)
