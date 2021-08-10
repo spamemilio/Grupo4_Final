@@ -176,12 +176,72 @@ poblacion_por_sexo_edad <-  read_excel("data/c1_proyecciones_nac_2010_2040.xls",
   prestaciones_edad <- 
   read_excel("data/H.2.2.Total Pais. Titulares de la AUH. Hijo e Hijo Discapacitado por sexo y grupo de edad.xlsx", 
              skip = 3) %>% 
-    rename(Fecha = `...1`) %>% 
-    filter(!is.na(as.numeric(Fecha))) %>% 
+    rename(Fecha = `...1`) %>%
+    filter(!is.na(as.numeric(Fecha))) %>%
     mutate(Fecha=as.double(Fecha)-(70*365)-19) %>%
-    mutate(Fecha=as_date(Fecha,origin = lubridate::origin))
+    mutate(Fecha=as_date(Fecha,origin = lubridate::origin)) %>%
+    mutate(`15 - 19...2` = as.double(`15 - 19...2`))
   
-  as_date(41791,x = )
+  prestaciones_edad_tidy <- 
+  prestaciones_edad %>% 
+    select(c(1,14:25)) %>% 
+    pivot_longer(cols = c(2:13), names_to = "rango_edad", values_to = "cantidad" ) %>% 
+    mutate(genero = 'F') %>% 
+    mutate(rango_edad =  str_replace_all(rango_edad,"\\.+\\d+", ""))
   
-  glimpse(prestaciones_edad)
+  prestaciones_edad_tidy_m <- 
+    prestaciones_edad %>% 
+    select(c(1,26:37)) %>% 
+    pivot_longer(cols = c(2:13), names_to = "rango_edad", values_to = "cantidad" ) %>% 
+    mutate(genero = 'M') %>% 
+    mutate(rango_edad =  str_replace_all(rango_edad,"\\.+\\d+", ""))
+  
+  prestaciones_edad_tidy <- prestaciones_edad_tidy %>% 
+    rbind(prestaciones_edad_tidy_m)
+  
+  prestaciones_edad_tidy %>% 
+  ggplot(aes(x = rango_edad, y = cantidad))+
+    geom_col(aes(fill=genero))+
+    facet_wrap(vars(Fecha))
+  
+  #Titulares de derecho de la AUH Hijo e Hijo Discapacitado, por sexo y grupo de edad
+  
+  prestaciones_sexo_edad_ninies <-
+  read_excel("data/H.1.3.Total Pais. Titulares de derecho de la AUH Hijo e Hijo Discapacitado, por sexo y grupo de edad.xlsx", 
+             col_types = c("date", "text", "numeric", 
+                           "numeric", "numeric", "numeric", 
+                           "numeric", "numeric", "numeric", 
+                           "numeric", "numeric", "numeric", 
+                           "numeric", "numeric", "numeric", 
+                           "numeric", "numeric", "numeric", 
+                           "numeric", "numeric", "numeric", 
+                         "numeric"), skip = 3) %>% 
+    rename(Fecha = `...1`) %>%
+    filter(!is.na(Fecha)) %>% 
+    mutate(Fecha=as.Date(Fecha))
+
+  prestaciones_sexo_edad_ninies_tidy <-   prestaciones_sexo_edad_ninies %>% 
+    select(c(1,9:15)) %>% 
+    pivot_longer(cols = c(2:8), names_to = "rango_edad", values_to = "cantidad" ) %>% 
+    mutate(genero = 'F') %>% 
+    mutate(rango_edad =  str_replace_all(rango_edad,"\\.+\\d+", "")) %>% 
+    mutate(rango_edad = as.factor(rango_edad))
+  
+  prestaciones_sexo_edad_ninies_tidy_m <-   prestaciones_sexo_edad_ninies %>% 
+    select(c(1,16:22)) %>% 
+    pivot_longer(cols = c(2:8), names_to = "rango_edad", values_to = "cantidad" ) %>% 
+    mutate(genero = 'M') %>% 
+    mutate(rango_edad =  str_replace_all(rango_edad,"\\.+\\d+", "")) %>% 
+    mutate(rango_edad = as.factor(rango_edad))
+    
+  prestaciones_sexo_edad_ninies_tidy <- prestaciones_sexo_edad_ninies_tidy %>% 
+    rbind(prestaciones_sexo_edad_ninies_tidy_m)
+  
+  
+  prestaciones_sexo_edad_ninies_tidy %>% 
+    ggplot(aes(x = rango_edad, y = cantidad))+
+    geom_col(aes(fill=genero))+
+    facet_wrap(vars(Fecha))
+  
+  glimpse(prestaciones_sexo_edad_ninies_tidy)
   
