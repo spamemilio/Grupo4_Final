@@ -2,6 +2,7 @@ setwd("~/Diplomatura/Trabajo Final/Grupo4_Final")
 library(tidyverse)
 library(lubridate)
 library(readxl)
+library(zoo)
 options(scipen = 100)
 
 #prestaciones_previsionales_sipa_por_tipo <- read_csv("https://infra.datos.gob.ar/catalog/sspm/dataset/189/distribution/189.1/download/prestaciones-previsionales-sipa-por-tipo.csv")
@@ -35,6 +36,8 @@ prestaciones_auh %>%
 totales_por_tipo_auh <- prestaciones_auh %>% 
   group_by(prestacion) %>% 
   summarise(total = max(cantidad, na.rm = TRUE))
+
+# Presupuesto AUH
 
 Credito_AUH_Interanual <- read_csv("data/Credito_PG19_SPG3_2009_2021.txt")
 
@@ -225,14 +228,18 @@ poblacion_por_sexo_edad <-  read_excel("data/c1_proyecciones_nac_2010_2040.xls",
     pivot_longer(cols = c(2:8), names_to = "rango_edad", values_to = "cantidad" ) %>% 
     mutate(genero = 'F') %>% 
     mutate(rango_edad =  str_replace_all(rango_edad,"\\.+\\d+", "")) %>% 
-    mutate(rango_edad = as.factor(rango_edad))
+    mutate(rango_edad = factor(rango_edad,levels=c("0 - 2", "3 - 5","6 - 8",
+                                                   "9 - 11", "12 - 14","15 - 17"
+                                                   , "18 y más") ))
   
   prestaciones_sexo_edad_ninies_tidy_m <-   prestaciones_sexo_edad_ninies %>% 
     select(c(1,16:22)) %>% 
     pivot_longer(cols = c(2:8), names_to = "rango_edad", values_to = "cantidad" ) %>% 
     mutate(genero = 'M') %>% 
     mutate(rango_edad =  str_replace_all(rango_edad,"\\.+\\d+", "")) %>% 
-    mutate(rango_edad = as.factor(rango_edad))
+    mutate(rango_edad = factor(rango_edad,levels=c("0 - 2", "3 - 5","6 - 8",
+                                                      "9 - 11", "12 - 14","15 - 17"
+                                                      , "18 y más") ))
     
   prestaciones_sexo_edad_ninies_tidy <- prestaciones_sexo_edad_ninies_tidy %>% 
     rbind(prestaciones_sexo_edad_ninies_tidy_m)
@@ -243,5 +250,40 @@ poblacion_por_sexo_edad <-  read_excel("data/c1_proyecciones_nac_2010_2040.xls",
     geom_col(aes(fill=genero))+
     facet_wrap(vars(Fecha))
   
-  glimpse(prestaciones_sexo_edad_ninies_tidy)
+# Monto Liquidado por Prestación
+  
+  montos_liquidados <- read_excel("data/H.1.2.Total Pais. Montos liquidados de la AUH. Hijo e Hijo Discapacitado.xlsx", 
+                       col_types = c("date", "numeric", "numeric", 
+                                     "numeric"), skip = 3) %>% 
+    rename(Fecha = `...1`) %>% 
+    filter(!is.na(Fecha)) %>% 
+    mutate( ejercicio_presupuestario = year(Fecha),
+      impacto_presupuestario_mes = month(Fecha))
+  
+  montos_liquidados %>% 
+    ggplot(aes(x=Fecha,y=Total))+
+    geom_area(fill="red")
+  
+  credito_mensual <- read_csv("data/credito_mensual_auh_interanual.csv.csv") %>% 
+    filter(ejercicio_presupuestario %in% c(2013:2019) ) %>%
+    group_by(ejercicio_presupuestario, impacto_presupuestario_mes) %>% 
+    summarise(vigente = sum(credito_vigente, na.rm = TRUE ),
+              pagado = sum(credito_pagado, na.rm = TRUE),
+              devengado = sum(credito_devengado, na.rm = TRUE) )
+  
+  montos_liquidados_presupuesto <- montos_liquidados %>% 
+    left_join(credito_mensual) %>% 
+    mutate(Total=Total/1000) %>% 
+    mutate(proporcion= Total/devengado) %>% 
+    mutate(proporcion = replace(proporcion, is.infinite(proporcion),0)) %>% 
+    mutate(media_movil = rollmean(proporcion, k = 5 , fill = NA, align = "rigth"))
+  
+  montos_liquidados_presupuesto %>% 
+    ggplot(aes(x=Fecha,))+
+    geom_line( aes(y=proporcion, color = "Diferencia" ), color = "green")+
+    geom_line(  aes(y=media_movil, color="Media Móvil"), color = "blue", size = 2)
+  
+  
+  
+    
   
