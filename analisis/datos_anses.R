@@ -3,7 +3,7 @@ library(tidyverse)
 library(lubridate)
 library(readxl)
 library(zoo)
-options(scipen = 100)
+options(scipen = 100, Encoding("WINDOWS-1252") )
 
 #prestaciones_previsionales_sipa_por_tipo <- read_csv("https://infra.datos.gob.ar/catalog/sspm/dataset/189/distribution/189.1/download/prestaciones-previsionales-sipa-por-tipo.csv")
 
@@ -13,25 +13,61 @@ prestaciones_previsionales_sipa_por_tipo <- read_csv("data/prestaciones-previsio
 
 prestaciones_tidy <- prestaciones_previsionales_sipa_por_tipo %>% 
   pivot_longer(cols = -ends_with("indice_tiempo"), names_to  = "prestacion", values_to ="cantidad" ) 
-
+  
 grafico_prestaciones_desagredadas <- 
 prestaciones_tidy %>% 
+  filter(prestacion %in% c("jubilaciones_sipa_transparencia",
+                           "pensiones_sipa_transparencia ",
+                           "asignacion_familiar_hijo_hijo_discapacitado",
+                           "asignacion_familiar_prenatal",
+                           "asignacion_universal_por_embarazo",
+                           "titulares_progresar",
+                           "jubilaciones_sipa_datos_abiertos",
+                           "pensiones_sipa_datos_abiertos",
+                           "pension_universal_adulto_mayor",
+                           "asignacion_familiar_hijo_discapacitado",
+                           "asignacion_familiar_prenatal_datos_abiertos",
+                           "asignacion_universal_embarazo",
+                           "prestaciones_seguro_desempleo",
+                           "asignacion_universal_hijo_hijo_discapacitado_trasparencia",
+                           "asignacion_universal_hijo_hijo_discapacitado_datos_abiertos"
+                           # "asignacion_universal_hijo_monotributo_social",
+                           # "asignacion_universal_hijo_servicio_domestico",
+                           # "asignacion_universal_hijo_otra_condicion",
+                           # "asignaciones_familiares_suaf_relacion_dependencia",
+                           # "asignaciones_familiares_suaf_monotributo",
+                           # "asignaciones_familiares_desempleo",
+                           # "asignaciones_familiares_pasivos_sipa"
+  )) %>% 
 ggplot(aes(x=indice_tiempo, y = cantidad)) +
-  geom_line(aes(color=prestacion))+
-  guides(color=guide_legend(ncol=1))
+  geom_line(aes( color=prestacion),size=1)+
+  guides(color=guide_legend(ncol=2))+
+  theme(legend.position="bottom")+
+  labs(title = "Prestaciones ANSES",
+       subtitle = paste("Evolucion ", year(min(prestaciones_tidy$indice_tiempo)),
+                        " a ", year(max(prestaciones_tidy$indice_tiempo))),
+       x = "Anio", y = "Cantidad de beneficiarios", color = "Prestacion")
+
 
 totales_por_prestacion <- prestaciones_tidy %>% 
   group_by(prestacion) %>% 
   summarise(total = max(cantidad, na.rm = TRUE))
 
 prestaciones_auh <- prestaciones_tidy %>% 
-  filter(str_detect(prestacion, "asignacion_universal"))
+  filter(str_detect(prestacion, "asignacion_universal")) %>% 
+  filter(!prestacion %in% c("asignacion_universal_hijo_hijo_discapacitado_datos_abiertos",
+                           "asignacion_universal_hijo_hijo_discapacitado_trasparencia"))
 
 grafico_prestaciones_auh <- 
 prestaciones_auh %>% 
   ggplot(aes(x=indice_tiempo, y = cantidad)) +
-  geom_line(aes(color=prestacion))+
-  guides(color=guide_legend(ncol=1))
+  geom_line(aes(color=prestacion),size=1)+
+  guides(color=guide_legend(ncol=2))+
+  theme(legend.position="bottom")+
+  labs(title = "Asignacion Universal por Hijo/a",
+       subtitle = paste("Por categorias Evolucion ", year(min(prestaciones_auh$indice_tiempo)),
+                        " a ", year(max(prestaciones_auh$indice_tiempo))),
+       x = "Anio", y = "Cantidad de beneficiarios", color = "Categoria")
 
 totales_por_tipo_auh <- prestaciones_auh %>% 
   group_by(prestacion) %>% 
@@ -41,23 +77,43 @@ totales_por_tipo_auh <- prestaciones_auh %>%
 
 Credito_AUH_Interanual <- read_csv("data/Credito_PG19_SPG3_2009_2021.txt")
 
+poblacion_provincia <- read_excel("data/poblacion_provincia.xls", 
+                                  col_types = c("text", "skip", "numeric", 
+                                                "skip", "skip"),
+                                  skip = 3) %>% 
+  rename(cantidad=...2) %>% 
+  filter(!is.na(cantidad)) %>% 
+  filter(!is.na(Provincia)) %>% 
+  filter(!Provincia %in% c("Total del país","24 partidos del Gran Buenos Aires",
+                          "Interior de la provincia de Buenos Aires")
+         ) 
+  # %>% 
+  # mutate(ponderacion = cantidad/sum(cantidad) )
+
 Credito_2020_por_Ubicacion <- Credito_AUH_Interanual %>% 
   filter(ejercicio_presupuestario == 2020) %>%
   group_by(impacto_presupuestario_mes, ubicacion_geografica_id,ubicacion_geografica_desc ) %>% 
   summarise(vigente = sum(credito_vigente, na.rm = TRUE ),
             pagado = sum(credito_pagado, na.rm = TRUE),
-            devengado = sum(credito_devengado, na.rm = TRUE) )
+            devengado = sum(credito_devengado, na.rm = TRUE) ) %>% 
+  filter(!ubicacion_geografica_desc %in% c("Interprovincial")) %>% 
+  mutate(ubicacion_geografica_desc = str_replace(ubicacion_geografica_desc,"Provincia de ", "")) %>% 
+  mutate(ubicacion_geografica_desc = str_replace(ubicacion_geografica_desc,"Provincia del ", "")) %>% 
+  rename(Provincia=ubicacion_geografica_desc) %>% 
+  left_join(poblacion_provincia) %>% 
+  mutate(devengado_proporcional = devengado / cantidad )
 
 grafico_evolucion_presupuesto_AUH <- 
 Credito_2020_por_Ubicacion %>% 
-  ggplot(aes(x=impacto_presupuestario_mes, y=devengado))+
-  geom_line(aes(color=ubicacion_geografica_desc))+
-  guides(color=guide_legend(ncol=1))+
+  ggplot(aes(x=impacto_presupuestario_mes, y=devengado_proporcional))+
+  geom_line(aes(color=Provincia))+
+  guides(color=guide_legend(ncol=3))+
   theme( plot.title.position = "plot",
          panel.border = element_blank(), panel.grid.major = element_line(colour = "grey80")
          , panel.grid.minor = element_blank(),  
          legend.direction = "vertical", legend.key.size = unit(1,"mm"), legend.key.width = unit(3,"mm"),
          legend.title = element_text(size = 9, face="bold"),
+         legend.position = "bottom",
          axis.text.x = element_text(size = 7),
          strip.text.x = element_text(size = 6,face="bold"),
          strip.background = element_rect(color="black", fill="#FFE599", size=0.5, linetype="solid"))
@@ -116,13 +172,19 @@ poblacion_por_sexo_edad <-  read_excel("data/c1_proyecciones_nac_2010_2040.xls",
   grafico_prestaciones_proporcion <- 
     prestaciones_auh_total_menores %>% 
     ggplot(aes(x=anio, y = proporcion)) +
-    geom_line(aes(color=prestacion),size=2)+
-    guides(color=guide_legend(ncol=1))+
-    scale_color_brewer(palette="Dark2")
+    geom_line(aes(color=prestacion),size=1)+
+    guides(color=guide_legend(ncol=2))+
+    scale_color_brewer(palette="Dark2")+
+    theme(legend.position="bottom")+
+    labs(title = "Evolucion categorias AUH",
+         subtitle = "Normalizado por poblacion total de 0 a 18",
+         x = "Anio", y = "Proporcion de Beneficiarios/as", color = "Categoria")
   
   poblacion_por_edad_0_19 %>% 
     ggplot(aes(x=anio, y=total_menores))+
     geom_line( color = "red")
+  
+  # Oponemos asignaciones familiares con AUH para determinar proporción
   
   prestaciones_auh_aaff <- prestaciones_tidy %>% 
     filter( prestacion %in% c("total_aaff", "total_auh") ) %>% 
@@ -156,10 +218,13 @@ poblacion_por_sexo_edad <-  read_excel("data/c1_proyecciones_nac_2010_2040.xls",
   prestaciones_por_familia_tidy <- prestaciones_por_familia %>% 
     pivot_longer(cols=-c("Fecha"), names_to = "cantidad_hijes", values_to = "cantidad") %>% 
     filter(cantidad_hijes != "Total")
+  
   grafico_prestaciones_por_familia <- 
     prestaciones_por_familia_tidy %>% 
     ggplot(aes(x=Fecha, y=cantidad))+
-    geom_area(aes(fill=cantidad_hijes))
+    geom_area(aes(fill=cantidad_hijes))+
+    labs(title = "Evolucion proporcion cantidad de hijos/as por titular",
+         x = "Anio", y = "Proporcion", color = "Cantidad de hijo/as")
   
   prestaciones_por_familia_tidy_min <- 
     prestaciones_por_familia_tidy %>% 
@@ -202,10 +267,14 @@ poblacion_por_sexo_edad <-  read_excel("data/c1_proyecciones_nac_2010_2040.xls",
   prestaciones_edad_tidy <- prestaciones_edad_tidy %>% 
     rbind(prestaciones_edad_tidy_m)
   
+  grafico_prestaciones_edad <- 
   prestaciones_edad_tidy %>% 
   ggplot(aes(x = rango_edad, y = cantidad))+
     geom_col(aes(fill=genero))+
-    facet_wrap(vars(Fecha))
+    facet_wrap(vars(year(Fecha)))+
+    labs(title = "Cantidad de prestaciones por edad",
+         subtitle = "De 0 a 18 anios dividio en rangos de 5",
+         x = "Rando de Edad", y = "Cantidad", fill = "Genero")
   
   #Titulares de derecho de la AUH Hijo e Hijo Discapacitado, por sexo y grupo de edad
   
@@ -244,11 +313,11 @@ poblacion_por_sexo_edad <-  read_excel("data/c1_proyecciones_nac_2010_2040.xls",
   prestaciones_sexo_edad_ninies_tidy <- prestaciones_sexo_edad_ninies_tidy %>% 
     rbind(prestaciones_sexo_edad_ninies_tidy_m)
   
-  
+  grafico_prestaciones_sexo_edad_ninies <- 
   prestaciones_sexo_edad_ninies_tidy %>% 
     ggplot(aes(x = rango_edad, y = cantidad))+
     geom_col(aes(fill=genero))+
-    facet_wrap(vars(Fecha))
+    facet_wrap(vars(year(Fecha)))
   
 # Monto Liquidado por Prestación
   
@@ -260,11 +329,7 @@ poblacion_por_sexo_edad <-  read_excel("data/c1_proyecciones_nac_2010_2040.xls",
     mutate( ejercicio_presupuestario = year(Fecha),
       impacto_presupuestario_mes = month(Fecha))
   
-  montos_liquidados %>% 
-    ggplot(aes(x=Fecha,y=Total))+
-    geom_area(fill="red")
-  
-  credito_mensual <- read_csv("data/credito_mensual_auh_interanual.csv.csv") %>% 
+    credito_mensual <- read_csv("data/credito_mensual_auh_interanual.csv.csv") %>% 
     filter(ejercicio_presupuestario %in% c(2013:2019) ) %>%
     group_by(ejercicio_presupuestario, impacto_presupuestario_mes) %>% 
     summarise(vigente = sum(credito_vigente, na.rm = TRUE ),
@@ -276,9 +341,9 @@ poblacion_por_sexo_edad <-  read_excel("data/c1_proyecciones_nac_2010_2040.xls",
     mutate(Total=Total/1000) %>% 
     mutate(proporcion= Total/devengado) %>% 
     mutate(proporcion = replace(proporcion, is.infinite(proporcion),0)) %>% 
-    mutate(media_movil = rollmean(proporcion, k = 5 , fill = NA, align = "rigth"))
+    mutate(media_movil = rollmean(proporcion, k = 5 , fill = NA, align = "right"))
   
-  montos_liquidados_presupuesto %>% 
+  proporcion_montos_presupusto <- montos_liquidados_presupuesto %>% 
     ggplot(aes(x=Fecha,))+
     geom_line( aes(y=proporcion, color = "Diferencia" ), color = "green")+
     geom_line(  aes(y=media_movil, color="Media Móvil"), color = "blue", size = 2)
