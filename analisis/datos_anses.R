@@ -187,15 +187,23 @@ poblacion_por_sexo_edad <-  read_excel("data/c1_proyecciones_nac_2010_2040.xls",
   # Oponemos asignaciones familiares con AUH para determinar proporción
   
   prestaciones_auh_aaff <- prestaciones_tidy %>% 
-    filter( prestacion %in% c("total_aaff", "total_auh") ) %>% 
+    filter( prestacion %in% c("total_aaff", "total_auh","ninios_adp") ) %>% 
     filter( day(indice_tiempo)==1 ) %>% 
     filter( !is.na(cantidad) ) %>% 
     pivot_wider(names_from = prestacion, values_from = cantidad) %>% 
-    mutate( anio = as.factor(year(indice_tiempo) )) 
+    mutate( anio = as.factor(year(indice_tiempo) )) %>% 
+    mutate( proporcion_aaff = total_aaff/ninios_adp,
+            proporcion_auh =  total_auh/ninios_adp)
     
   grafico_correlacion_auh_aaff <- 
   prestaciones_auh_aaff %>% 
     ggplot(aes(x=total_aaff,y=total_auh)) +
+    geom_point(aes(color=anio))+
+    scale_color_brewer(palette="Dark2")
+  
+  grafico_correlacion_auh_aaff_proporcion <- 
+    prestaciones_auh_aaff %>% 
+    ggplot(aes(x=proporcion_aaff,y=proporcion_auh)) +
     geom_point(aes(color=anio))+
     scale_color_brewer(palette="Dark2")
   

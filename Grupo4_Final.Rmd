@@ -3,10 +3,10 @@ title: "Diplomatura en análisis de datos aplicados al desarrollo de políticas 
 author: "Emilio Madias, Gustavo Merino, Silvia Palacios"
 date: "9/7/2021"
 output:
+  word_document: default
+  pdf_document: default
   html_document:
     df_print: paged
-  pdf_document: default
-  word_document: default
 fontsize: 12
 font: Arial
 ---
@@ -422,6 +422,12 @@ Analizamos una correlación negativa entre asignaciones familiares y asignación
 
 ```{r grafico_correlacion_auh_aaff, echo=FALSE}
 print(grafico_correlacion_auh_aaff)
+```
+
+Para descontar las distorsiones por el crecimiento poblacional transformamos los valores en proporciones de los niños y niñas de acada momento.
+
+```{r grafico_correlacion_auh_aaff_proporcion, echo=FALSE}
+print(grafico_correlacion_auh_aaff_proporcion)
 ```
 
 A continuación analizamos la evolución de la cantidad de hijos/as por titular de la AUH. En contraposición con ciertas creencias, vemos que más de la mayoría de las personas tienen un solo hijo/a. Y que esa proporción no solo no baja sino que crece. A principio de la serie la proporción de titulares con un hijo/a es del `r round(unlist(prestaciones_por_familia_tidy_dif[1,"cantidad_min"])*100,2) `% mientras que al final pasó a `r round(unlist(prestaciones_por_familia_tidy_dif[1,"cantidad_max"])*100,2) `%. Por el contrario la proporción de 5 beneficiarios por familia pasó del `r round(unlist(prestaciones_por_familia_tidy_dif[5,"cantidad_min"])*100,2) `% al `r round(unlist(prestaciones_por_familia_tidy_dif[5,"cantidad_max"])*100,2) `%.
