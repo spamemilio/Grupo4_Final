@@ -1,6 +1,6 @@
 #GRAFICO DE BURBUJAS
 
-leyenda = "Grafico de burbujas para graficar mejor la relcion entre asignaciones familiares y otros gastos sociales (sin Seguridad Social)"
+leyenda = "Grafico de burbujas para graficar mejor la relacion entre asignaciones familiares y otros gastos sociales (sin Seguridad Social)"
 print (leyenda)
 
 burbuja_asig_promedio <- 

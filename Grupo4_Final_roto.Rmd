@@ -3,13 +3,52 @@ title: "Diplomatura en análisis de datos aplicados al desarrollo de políticas 
 author: "Emilio Madias, Gustavo Merino, Silvia Palacios"
 date: "9/7/2021"
 output:
-  word_document: default
-  pdf_document: default
   html_document:
     df_print: paged
+    pandoc_args: ["--lua-filter=color-text.lua"]
+  pdf_document: 
+    pandoc_args: ["--lua-filter=color-text.lua"]
+    keep_tex: true
+  word_document: default
 fontsize: 12
 font: Arial
+    
 ---
+
+```{cat, engine.opts = list(file = "color-text.lua")}
+Span = function(el)
+  color = el.attributes['color']
+  -- if no color attribute, return unchange
+  if color == nil then return el end
+  
+  -- transform to <span style="color: red;"></span>
+  if FORMAT:match 'html' then
+    -- remove color attributes
+    el.attributes['color'] = nil
+    -- use style attribute instead
+    el.attributes['style'] = 'color: ' .. color .. ';'
+    -- return full span element
+    return el
+  elseif FORMAT:match 'latex' then
+    -- remove color attributes
+    el.attributes['color'] = nil
+    -- encapsulate in latex code
+    table.insert(
+      el.content, 1,
+      pandoc.RawInline('latex', '\\textcolor{'..color..'}{')
+    )
+    table.insert(
+      el.content,
+      pandoc.RawInline('latex', '}')
+    )
+    -- returns only span content
+    return el.content
+  else
+    -- for other format return unchanged
+    return el
+  end
+end
+```
              
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(
@@ -30,7 +69,7 @@ Este estudio pretende realizar un análisis reproducible de dicha política púb
 
 El carácter de reproducible está dado a partir de que para su realización se utilizarán datos abiertos que son publicados por distintos organismos públicos. 
 
-## Datasets utilizados
+## [Datasets utilizados]{color="darkblue"}
 
 Los datos abiertos que tomaremos son:
 
@@ -47,20 +86,19 @@ Los datos abiertos que tomaremos son:
   <https://www.indec.gob.ar/indec/web/Nivel4-Tema-2-24-84>
 
 
-## Aspectos técnicos
+## [Aspectos técnicos]{color="darkblue"}
 
 Este análisis se realizó utilizando 
+   
+   [**R para limpiar y analizar los datos**]{color="pink"}
 
-    	R para limpiar y analizar los datos
-    	
-    	R Markdown para presentar el informe
-    	
-    	Visualizaciones en R para graficar los hallazgos 
-      
+   [**R Markdown para presentar el informe**]{color="pink"}
+
+   [**Visualizaciones en R para graficar los hallazgos**]{color="pink"}
 
 El software utilizado para la codificación fue RStudio
 
-## Introducción
+## [Introducción]{color="darkblue"}
 
 ### Marco teórico y antecedentes históricos
 
@@ -232,7 +270,7 @@ Los montos asignados en la ley de Presupuesto, así como la descripción de la p
 La ejecución presupuestaria se puede seguir en el sitio Presupuesto Abierto <https://www.presupuestoabierto.gob.ar/sici/home>
 
 
-## Análisis Presupuestario
+## [Análisis Presupuestario]{color="darkblue"}
 
 Para poder efectuar una comparación interanual de asignaciones presupuestarias es necesario encontrar una unidad de medida que permita dejar de lado el componente inflacionario que está presente en la economía argentina. 
 
@@ -447,13 +485,13 @@ print(grafico_prestaciones_edad)
 print(grafico_prestaciones_sexo_edad_ninies)
 ```
 
-## CONCLUSIONES Y REFLEXIONES
+## [CONCLUSIONES Y REFLEXIONES]{color="darkblue"}
+
 Después del análisis de la implementación de esta política pública podemos observar lo que hoy en día significa; lo que nació como una ayuda de emergencia se ha trasformado en una ayuda indispensable para la población más vulnerable o con menores posibilidades de generar ingresos significativos para prescindir de ella. Contrariamente a lo ideado, el grupo de beneficiarios activos es inferior al de pasivos, y la diferencia crece en lugar de reducirse. Actualmente hay una correlación inversa a la deseada en su nacimiento.
 
 Con la implementación de la AUH se esperaba que en el futuro vaya decreciendo el número de beneficiarios de AUH, ya que desde el Estado Nacional se implementan otras políticas públicas activas para combatir el trabajo no registrado lo que llevarían a reducir la población objetivo del programa. Sin embargo, las condiciones económico – sociales en el contexto histórico no parecen permitir que lo esperable se haya transformado en un hecho, sino que, por el contrario, se deba pensar en incrementar el prepuesto asignado año a año.
 
 También podemos deducir que esta asignación es mal percibida por parte de la población. Popularmente se cree que las mujeres que tienen bajos ingresos informales, tienen hijos intencionalmente para cobrar la AUH y que el monto total por 5 hijos es el mayormente cobrado. Después del análisis de valores destinados de AUH se puede observar que el mayor grupo poblacional que lo percibe es el compuesto por 1 y 2 hijos desmitificando que se tienen 5 hijos para cobrar la AUH. Por otra parte, el rango de beneficiarios que tiene 5 hijos fue disminuyendo con el correr de los años.
-
 Este límite del quinto hijo nos plantea una inquietud sobre la inclusión del sexto hijo en una futura actualización de la normativa vigente para que el principio de universalidad sea más elevado en la aplicación del beneficio.
 
 Otra observación que quiebra la universalidad es que los trabajadores que tienen ingresos familiares superiores a $ 200.000, dejan de cobrar asignación por hijo. Si bien se puede pensar que no lo necesitan porque su ingreso es suficiente para la educación y protección de sus hijos; el monto no parece ser tan elevado, pero se considera suficiente para quedar excluidos. Asimismo, podemos considerar que este grupo paga impuesto a las ganancias y que por lo tanto pueden deducir de la liquidación de su impuesto, a sus hijos por un monto similar al de las asignaciones por hijo.
