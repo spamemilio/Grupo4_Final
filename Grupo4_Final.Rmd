@@ -390,6 +390,7 @@ Presentamos dos gráficos, uno con todas las asignaciones familiares y otro solo
 
 ```{r datos_anses, include=FALSE}
  source(".\\analisis\\datos_anses.R", local = knitr::knit_global())
+ source(".\\analisis\\datos_macro.R", local = knitr::knit_global())
 ```
 
 
@@ -429,6 +430,13 @@ Para descontar las distorsiones por el crecimiento poblacional transformamos los
 ```{r grafico_correlacion_auh_aaff_proporcion, echo=FALSE}
 print(grafico_correlacion_auh_aaff_proporcion)
 ```
+
+Realizamos una visutalización similar para ver la correlación entre proporción de niños/as con AUH y tasa de desocupación. Como era de esperar, a mayor tasa de desocupación crece la proporción de AUH
+
+```{r grafico_correlacion_auh_tdes, echo=FALSE}
+print(grafico_correlacion_auh_tdes)
+```
+
 
 A continuación analizamos la evolución de la cantidad de hijos/as por titular de la AUH. En contraposición con ciertas creencias, vemos que más de la mayoría de las personas tienen un solo hijo/a. Y que esa proporción no solo no baja sino que crece. A principio de la serie la proporción de titulares con un hijo/a es del `r round(unlist(prestaciones_por_familia_tidy_dif[1,"cantidad_min"])*100,2) `% mientras que al final pasó a `r round(unlist(prestaciones_por_familia_tidy_dif[1,"cantidad_max"])*100,2) `%. Por el contrario la proporción de 5 beneficiarios por familia pasó del `r round(unlist(prestaciones_por_familia_tidy_dif[5,"cantidad_min"])*100,2) `% al `r round(unlist(prestaciones_por_familia_tidy_dif[5,"cantidad_max"])*100,2) `%.
 

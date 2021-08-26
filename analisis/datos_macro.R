@@ -1,4 +1,5 @@
 library(tidyverse)
+library(lubridate)
 
 # Tasa Desempleo
 
@@ -18,89 +19,100 @@ indicador_prueba <- tasa_desempleo_valores_trimestrales[1:5] %>%
   arrange(indice_tiempo)
 
 
-completar_promedios_for <- function (indicador) {
+completar_meses_faltantes <- function(lista_meses) {
   
-  for(i in 1:unlist(count(indicador))) {
-    
-    j = i
-    
-    while(is.na(indicador[j,])) {
-      
-      j = j + 1
-     
+  min_max <-  lista_meses %>% 
+    summarise( min = min(pull(lista_meses[1])) ,
+               max = max(pull(lista_meses[1]) ))
+  
+  cantidad_meses <-  interval(min_max$min,  min_max$max) %/% months(1)
+  
+  Fecha <- seq(from=min_max$min, by="month", length.out=cantidad_meses)
+  
+  lista_meses_completa <- data.frame(Fecha)
+  
+  return(lista_meses_completa)
+  
+   }
+  
+lista <- completar_meses_faltantes(indicador_prueba[1])  
+
+completar_promedios <- function(indicador){
+  
+  i = c(2)
+  
+  indicador_n = indicador 
+  
+  if(is.na(indicador[1,])) {
+    indicador_n[1,] = 0
     }
+  
+  if(is.na(indicador[unlist(count(indicador)),])) { 
+    indicador_n[unlist(count(indicador)),] = 0 
+    indicador[unlist(count(indicador)),] = 0 
+    }
+  
+  while(i<=unlist(count(indicador))) {
     
-   # if (j == i ) {
-    #  indicador[i,] = indicador[j,]
-    # }
-    
-    if (i==1) {
-      if(is.na(indicador[i,])) {indicador[i,] = 0 }
-    } 
+    if(!is.na(indicador[i,])) {  
+      
+      indicador_n[i,] =  indicador[i,]
+      
+      i = i+1
+      
+      }
     
     else {
-     # print((unlist(indicador[i-1,]) + unlist(indicador[j,]  ) /j-i) )
-     #  print(paste("unlist(indicador[i-1,] ", unlist(indicador[i-1,] )))
-     #  print(paste("unlist(indicador[j,] ", unlist(indicador[j,] )))
-     #  print (paste("j: ", j, " i ", i))
-      # print(as.data.frame(unlist(indicador[i,1])))
-      indicador[i,] = as.data.frame((unlist(indicador[i-1,]) + unlist(indicador[j,] )) / (j-i))
-      # return(as.data.frame((unlist(indicador[i-1,]) + unlist(indicador[j,] )) / (j-i)))
+      
+      j = i
+      
+      while(is.na(indicador[j,])) {
+        
+        j = j + 1
+        
+      }
+      
+      for (k in i:j){
+        
+        indicador_n[k,] = indicador[i-1,] + (indicador[j,]-indicador[i-1,])/(j-(i-1))*(k-(i-1))
+        
+      }
+      
+      i = j
       
     }
     
-            
-    }
-}
-
-completar_promedios <- function (indicador) {
-    
-  glimpse(indicador)
+  }
   
-    j = i
-    
-  #   while(is.na(indicador[j,])) {
-  #     
-  #     j = j + 1
-  #     
-  #   }
-  #   
-  #   if (i==1) {
-  #     if(is.na(indicador[i,])) {indicador[i,] = 0 }
-  #   } 
-  #   
-  #   else {
-  #     print((unlist(indicador[i-1,]) + unlist(indicador[j,]  ) /j-i) )
-  #     print(paste("unlist(indicador[i-1,] ", unlist(indicador[i-1,] )))
-  #     print(paste("unlist(indicador[j,] ", unlist(indicador[j,] )))
-  #     print (paste("j: ", j, " i ", i))
-  #     print(as.data.frame(unlist(indicador[i,1])))
-  #     indicador[i,] = as.data.frame((unlist(indicador[i-1,]) + unlist(indicador[j,] )) / (j-i))
-  #     
-  #   }
-  #   
-  #   
-  # }
-}
+  return(indicador_n)
 
-# indicador_prueba_completado <- completar_promedios(indicador_prueba[2])
+  }
 
 
-# indicador_prueba %>%  mutate(eph_continua_tasa_desempleo_total=unlist(map(eph_continua_tasa_desempleo_total, completar_promedios_for) ))
-# 
-# glimpse(indicador_prueba)
+desempleo_mensual <- tasa_desempleo_valores_trimestrales %>% 
+  right_join(lista, by = c("indice_tiempo" = "Fecha") ) %>% 
+  select(indice_tiempo,eph_continua_tasa_desempleo_total) %>% 
+ arrange(indice_tiempo)
 
- 
+desempleo_mensual$eph_continua_tasa_desempleo_total <- unlist(completar_promedios(desempleo_mensual['eph_continua_tasa_desempleo_total']))
 
-completar_promedios_for(indicador_prueba[2])
-# 
-# indicador_prueba[2][2,] = (unlist(indicador_prueba[2][2-1,]) + unlist(indicador_prueba[2][3,] )) / (3-1)
+# oponemos auh con tasa de desocupación para buscar correlación
 
-variable <- 3
+prestaciones_auh_tdes <- prestaciones_tidy %>% 
+  filter( prestacion %in% c("total_auh","ninios_adp") ) %>% 
+  filter( day(indice_tiempo)==1 ) %>% 
+  filter( !is.na(cantidad) ) %>% 
+  pivot_wider(names_from = prestacion, values_from = cantidad) %>% 
+  mutate( anio = as.factor(year(indice_tiempo) )) %>% 
+  mutate( proporcion_auh =  total_auh/ninios_adp) %>% 
+  left_join(desempleo_mensual) %>% 
+  filter(!indice_tiempo %in% c(parse_date("2020-11-01"), parse_date("2020-12-01"))) %>% 
+  mutate( mes = as.factor(month(indice_tiempo)))
 
-cambio_prueba(variable)
+grafico_correlacion_auh_tdes <- 
+  prestaciones_auh_tdes %>% 
+  ggplot(aes(x=proporcion_auh,y=eph_continua_tasa_desempleo_total)) +
+  geom_point(aes(color=mes))+
+  scale_color_brewer(palette="Dark2")
 
-cambio_prueba <- function(var){
-  var= 5
-  
-}
+glimpse(prestaciones_auh_tdes)
