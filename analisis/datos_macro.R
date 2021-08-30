@@ -115,4 +115,4 @@ grafico_correlacion_auh_tdes <-
   geom_point(aes(color=mes))+
   scale_color_brewer(palette="Dark2")
 
-glimpse(prestaciones_auh_tdes)
+
