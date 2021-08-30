@@ -1,7 +1,7 @@
 #GRAFICO DE BURBUJAS
 
-leyenda = "Grafico de burbujas para graficar mejor la relacion entre asignaciones familiares y otros gastos sociales (sin Seguridad Social)"
-print (leyenda)
+#leyenda = "Grafico de burbujas para graficar mejor la relacion entre asignaciones familiares y otros gastos sociales (sin Seguridad Social)"
+#print (leyenda)
 
 burbuja_asig_promedio <- 
   funcion_unificado_sin_seguridad_con_familiares %>% 
@@ -28,8 +28,8 @@ burflia <- ggplot() +
 
 print(burflia)
 
-leyenda = "Grafico de burbujas para graficar mejor relacion entre AUH y otros gastos sociales (sin Seguridad Social)"
-print (leyenda)
+#leyenda = "Grafico de burbujas para graficar mejor relacion entre AUH y otros gastos sociales (sin Seguridad Social)"
+#print (leyenda)
 
 
 burbuja_auh_promedio <- 

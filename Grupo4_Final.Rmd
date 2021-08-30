@@ -3,8 +3,8 @@ title: "Diplomatura en análisis de datos aplicados al desarrollo de políticas 
 author: "Emilio Madias, Gustavo Merino, Silvia Palacios"
 date: "9/7/2021"
 output:
-  word_document: default
   pdf_document: default
+  word_document: default
   html_document:
     df_print: paged
 fontsize: 12
@@ -294,7 +294,7 @@ Ahora analizamos la AUH respecto a otras asignaciones familiares financiadas por
 * Asignaciones Familiares Pasivos
 * Asignaciones Familiares Pensión Universal
 
-```{r graficos_presu_2, echo=FALSE, out.width="80%"  }
+```{r graficos_presu_2, echo=FALSE, out.width="100%"  }
  source(".\\analisis\\graficos_presu_2.R", local = knitr::knit_global())
 ```
 
