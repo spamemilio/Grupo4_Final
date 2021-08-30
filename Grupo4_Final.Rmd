@@ -3,8 +3,8 @@ title: "Diplomatura en análisis de datos aplicados al desarrollo de políticas 
 author: "Emilio Madias, Gustavo Merino, Silvia Palacios"
 date: "9/7/2021"
 output:
-  pdf_document: default
   word_document: default
+  pdf_document: default
   html_document:
     df_print: paged
 fontsize: 12
@@ -464,6 +464,39 @@ También podemos deducir que esta asignación es mal percibida por parte de la p
 
 Este límite del quinto hijo nos plantea una inquietud sobre la inclusión del sexto hijo en una futura actualización de la normativa vigente para que el principio de universalidad sea más elevado en la aplicación del beneficio.
 
-Otra observación que quiebra la universalidad es que los trabajadores que tienen ingresos familiares superiores a $ 200.000, dejan de cobrar asignación por hijo. Si bien se puede pensar que no lo necesitan porque su ingreso es suficiente para la educación y protección de sus hijos; el monto no parece ser tan elevado, pero se considera suficiente para quedar excluidos. Asimismo, podemos considerar que este grupo paga impuesto a las ganancias y que por lo tanto pueden deducir de la liquidación de su impuesto, a sus hijos por un monto similar al de las asignaciones por hijo.
+Otra observación que quiebra la universalidad es que los trabajadores que tienen ingresos familiares superiores a $ 200.000, dejan de cobrar asignación familiar por hijo. Si bien se puede pensar que no lo necesitan porque su ingreso es suficiente para la educación y protección de sus hijos; el monto no parece ser tan elevado, pero se considera suficiente para quedar excluidos. Asimismo, podemos considerar que este grupo paga impuesto a las ganancias y que por lo tanto pueden deducir de la liquidación de su impuesto, a sus hijos por un monto similar al de las asignaciones por hijo.
 
 Finalmente podemos concluir que esta política social ha causado un impacto positivo con su implementación al punto de transformarse en un beneficio muy difícil de cancelar en el futuro, no solo porque transfiere fondo en forma directa y permanente a las familias más vulnerables de la sociedad sino también, porque promueve la inserción en el sistema de salud e incentivar la escolaridad, asegurando así la inclusión y protección de derechos para todos los niños beneficiarios.
+
+## Bibliografía
+
+. Análisis de Titulares de AUH 
+Autor: Consejo Nacional de Políticas Sociales - 2019 <https://www.argentina.gob.ar/sites/default/files/analisis_de_titulares_de_auh_0.pdf>
+
+. La implementación de la Asignación Universal por Hijo en ámbitos
+subnacionales.
+Autor: Gala Diaz Langou - CIPPEC - 2012 <https://www.cippec.org/wp-content/uploads/2017/03/2452.pdf>
+
+. Análisis y propuestas de mejoras para ampliar la Asignación Universal por Hijo. 
+Autores: UNICEF - Anses - Ministerio de Desarrollo Social - CEDLAS - Conicet - Consejo Nacional de POlíticas Sociales - 2017 <https://www.unicef.org/argentina/media/2696/file/AUH.pdf>
+
+. Incidencia distributiva del gasto en Asignaciones Familiares, AUH y Educación (2017) 
+Autores: UNICEF - Ministerio de Economía - Enero 2020
+<https://www.unicef.org/argentina/media/7936/file/Gasto%20en%20asignaciones%20familiares,%20AUH%20y%20educaci%C3%B3n.pdf>
+
+. La Asignación Universal por Hijo para Protección Social en perspectiva - Autor: ANSES - Abril 2012
+<http://observatorio.anses.gob.ar/archivos/publicaciones/OBS-000255%20-%20AUH%20en%20Perspectiva.pdf>
+
+. El gran desafío de romper la trampa de la desigualdad desde la infancia. 
+Aprendizajes de la Asignación Universal por Hijo 
+Autores: Bernardo Kliksberg, Irene Novacovsky
+Equipo: Isidro Aduriz, Victoria Arinci, Horacio Chitarroni, Elisa Trotta Gamus, Naomi Wermus - Editorial Biblos - 2015
+<https://dds.cepal.org/redesoc/archivos_recursos/4365/AUH-Librocompleto.pdf>
+
+. Asignación Universal por Hijo para la Protección Social de la Argentina
+Entre la satisfacción de necesidades y el reconocimiento de derechos. - UNICEF - CEPAL
+Autores: Laura Pautassi, Pilar Arcidiácono y Mora Straschnoy
+<http://www.derecho.uba.ar/investigacion/investigadores/publicaciones/pautassi-asignacion-universal-por-hijo.pdf>
+
+. Decreto 1602 / 2009 - Incorpórase el Subsistema no Contributivo de Asignación Universal por hijo para Protección Social. <http://servicios.infoleg.gob.ar/infolegInternet/anexos/155000-159999/159466/norma.htm>
+
