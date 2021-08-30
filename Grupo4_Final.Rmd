@@ -384,9 +384,9 @@ Presentamos dos gráficos, uno con todas las asignaciones familiares y otro solo
  source(".\\analisis\\graficos_presu_6.R", local = knitr::knit_global())
 ```
 
+\newpage
 
-
-### Análisis Datos ANSES
+## Análisis Datos ANSES
 
 ```{r datos_anses, include=FALSE}
  source(".\\analisis\\datos_anses.R", local = knitr::knit_global())
