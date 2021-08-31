@@ -3,8 +3,8 @@ title: "Diplomatura en análisis de datos aplicados al desarrollo de políticas 
 author: "Emilio Madias, Gustavo Merino, Silvia Palacios"
 date: "9/7/2021"
 output:
-  pdf_document: default
   word_document: default
+  pdf_document: default
   html_document:
     df_print: paged
 fontsize: 12
@@ -384,6 +384,9 @@ Presentamos dos gráficos, uno con todas las asignaciones familiares y otro solo
  source(".\\analisis\\graficos_presu_6.R", local = knitr::knit_global())
 ```
 
+Es interesante observar que en promedio las asignaciones familiares han tenido una participación mayor que el gasto en salud (aunque hay que tener en cuenta que gran parte del gasto en salud es realizado por provincias y subnacional).
+De todos modos si es notable que la AUH en promedio representa mas gasto que lo invertido en Vivienda y Urbanismo y también en Ciencia y Técnica.
+
 \newpage
 
 ## Análisis Datos ANSES
@@ -396,65 +399,71 @@ Presentamos dos gráficos, uno con todas las asignaciones familiares y otro solo
 
 Aquí vemos el dataset de Anses desagregado. La principal prestación es la cantidad de jubilaciones. En segundo lugar se encuentra la suma de las Asignaciones Familiares. Y en tercer lugar la Asignación Universal por Hijo/a e Hijo/a Discapacitado. Por último se encuentra el total de pensiones. Luego hay otras prestaciones pero menos significativas
 
-```{r grafico_prestaciones_desagredadas, echo=FALSE}
+```{r grafico_prestaciones_desagredadas, echo=FALSE, fig.height=7}
 print(grafico_prestaciones_desagredadas)
 ```
 
+\newpage
 Aislamos las prestaciones de las que se compone la AUH. La categoría "otra condición" es sin dudas la que hegemoniza el listado.
 
 ```{r datos_prestaciones_auh, echo=FALSE}
-print(grafico_prestaciones_auh)
+plot(grafico_prestaciones_auh)
+
 ```
 
 
-```{r grafico_evolucion_presupuesto_AUH, eval=FALSE, include=FALSE}
+```{r grafico_evolucion_presupuesto_AUH, eval=FALSE, include=FALSE, out.width="100%"}
 print(grafico_evolucion_presupuesto_AUH)
 ##ver de pasar a la otra parte
 ```
-
+\newpage
 
 Vemos el mismo gráfico pero normalizando por el total de la población total de las edades objetivo. Se puede apreciar un crecimiento importante entre los años 2015 y 2020.
 
-```{r grafico_prestaciones_proporcion, echo=FALSE}
+```{r grafico_prestaciones_proporcion, echo=FALSE, out.width="100%", fig.height=7}
 print(grafico_prestaciones_proporcion)
 ```
-
+\newpage
 Analizamos una correlación negativa entre asignaciones familiares y asignación por hijo. Interpretamos que esto es producto del deterioro de las condiciones laborales durante los años de crisis económica que expulsan a la fuerza de trabajo del mercado formal.
 
-```{r grafico_correlacion_auh_aaff, echo=FALSE}
+```{r grafico_correlacion_auh_aaff, echo=FALSE, out.width="100%"}
 print(grafico_correlacion_auh_aaff)
 ```
-
+\newpage
 Para descontar las distorsiones por el crecimiento poblacional transformamos los valores en proporciones de los niños y niñas de acada momento.
 
-```{r grafico_correlacion_auh_aaff_proporcion, echo=FALSE}
+```{r grafico_correlacion_auh_aaff_proporcion, echo=FALSE, out.width="100%"}
 print(grafico_correlacion_auh_aaff_proporcion)
 ```
-
+\newpage
 Realizamos una visutalización similar para ver la correlación entre proporción de niños/as con AUH y tasa de desocupación. Como era de esperar, a mayor tasa de desocupación crece la proporción de AUH
 
-```{r grafico_correlacion_auh_tdes, echo=FALSE}
+```{r grafico_correlacion_auh_tdes, echo=FALSE, out.width="100%"}
 print(grafico_correlacion_auh_tdes)
 ```
-
+\newpage
 
 A continuación analizamos la evolución de la cantidad de hijos/as por titular de la AUH. En contraposición con ciertas creencias, vemos que más de la mayoría de las personas tienen un solo hijo/a. Y que esa proporción no solo no baja sino que crece. A principio de la serie la proporción de titulares con un hijo/a es del `r round(unlist(prestaciones_por_familia_tidy_dif[1,"cantidad_min"])*100,2) `% mientras que al final pasó a `r round(unlist(prestaciones_por_familia_tidy_dif[1,"cantidad_max"])*100,2) `%. Por el contrario la proporción de 5 beneficiarios por familia pasó del `r round(unlist(prestaciones_por_familia_tidy_dif[5,"cantidad_min"])*100,2) `% al `r round(unlist(prestaciones_por_familia_tidy_dif[5,"cantidad_max"])*100,2) `%.
 
 
-```{r grafico_prestaciones_por_familia, echo=FALSE}
+```{r grafico_prestaciones_por_familia, echo=FALSE, out.width="100%"}
 print(grafico_prestaciones_por_familia)
 ```
-
+\newpage
 Deteniéndonos en la estructura de las edades de las/os titulares, resulta interesante observar la evolución de la forma del gráfico. En los primeros años se puede apreciar cierta similaridad en el segundo, tercer y cuarto rango (20-25 , 25-30, y 30-35 respectivamente). Sin embargo en los últimos años aparece una forma más bien triangular con un pico en el rango de 25 a 30 años. Considerando que el total de prestaciones viene en aumento, podría estar expresando que las madres tienen sus hijos/as a edades mayores.
 
-```{r grafico_prestaciones_edad, echo=FALSE}
+```{r grafico_prestaciones_edad, echo=FALSE, out.width="100%"}
 print(grafico_prestaciones_edad)
 ```
 
-```{r grafico_prestaciones_sexo_edad_ninies, echo=FALSE}
+\newpage
+Otro enfoque similar al anterior pero observando la composición de las edades de los hijos/as beneficiarios. Si comparamos los primeros años con los últimos observamos que cae la proporción de niños/as de 0 a 2 años que perciben el derecho sobre el total. Esto podría estar indicando una basa en la tasa de la natalidad, considerando que la cantidad total de prestaciones AUH viene subiendo.
+
+```{r grafico_prestaciones_sexo_edad_ninies, echo=FALSE, out.width="100%"}
 print(grafico_prestaciones_sexo_edad_ninies)
 ```
 
+\newpage
 ## CONCLUSIONES Y REFLEXIONES
 Después del análisis de la implementación de esta política pública podemos observar lo que hoy en día significa; lo que nació como una ayuda de emergencia se ha trasformado en una ayuda indispensable para la población más vulnerable o con menores posibilidades de generar ingresos significativos para prescindir de ella. Contrariamente a lo ideado, el grupo de beneficiarios activos es inferior al de pasivos, y la diferencia crece en lugar de reducirse. Actualmente hay una correlación inversa a la deseada en su nacimiento.
 
@@ -468,6 +477,7 @@ Otra observación que quiebra la universalidad es que los trabajadores que tiene
 
 Finalmente podemos concluir que esta política social ha causado un impacto positivo con su implementación al punto de transformarse en un beneficio muy difícil de cancelar en el futuro, no solo porque transfiere fondo en forma directa y permanente a las familias más vulnerables de la sociedad sino también, porque promueve la inserción en el sistema de salud e incentivar la escolaridad, asegurando así la inclusión y protección de derechos para todos los niños beneficiarios.
 
+\newpage
 ## Bibliografía
 
 . Análisis de Titulares de AUH 

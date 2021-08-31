@@ -42,7 +42,7 @@ prestaciones_tidy %>%
 ggplot(aes(x=indice_tiempo, y = cantidad)) +
   geom_line(aes( color=prestacion),size=1)+
   guides(color=guide_legend(ncol=2))+
-  theme(legend.position="bottom")+
+  theme(legend.position="bottom", legend.text=element_text(size=8))+
   labs(title = "Prestaciones ANSES",
        subtitle = paste("Evolucion ", year(min(prestaciones_tidy$indice_tiempo)),
                         " a ", year(max(prestaciones_tidy$indice_tiempo))),
@@ -62,7 +62,7 @@ grafico_prestaciones_auh <-
 prestaciones_auh %>% 
   ggplot(aes(x=indice_tiempo, y = cantidad)) +
   geom_line(aes(color=prestacion),size=1)+
-  guides(color=guide_legend(ncol=2))+
+  guides(color=guide_legend(ncol=1))+
   theme(legend.position="bottom")+
   labs(title = "Asignacion Universal por Hijo/a",
        subtitle = paste("Por categorias Evolucion ", year(min(prestaciones_auh$indice_tiempo)),
@@ -173,9 +173,9 @@ poblacion_por_sexo_edad <-  read_excel("data/c1_proyecciones_nac_2010_2040.xls",
     prestaciones_auh_total_menores %>% 
     ggplot(aes(x=anio, y = proporcion)) +
     geom_line(aes(color=prestacion),size=1)+
-    guides(color=guide_legend(ncol=2))+
+    guides(color=guide_legend(ncol=1))+
     scale_color_brewer(palette="Dark2")+
-    theme(legend.position="bottom")+
+    theme(legend.position="bottom",legend.text=element_text(size=8))+
     labs(title = "Evolucion categorias AUH",
          subtitle = "Normalizado por poblacion total de 0 a 18",
          x = "Anio", y = "Proporcion de Beneficiarios/as", color = "Categoria")
@@ -232,7 +232,8 @@ poblacion_por_sexo_edad <-  read_excel("data/c1_proyecciones_nac_2010_2040.xls",
     ggplot(aes(x=Fecha, y=cantidad))+
     geom_area(aes(fill=cantidad_hijes))+
     labs(title = "Evolucion proporcion cantidad de hijos/as por titular",
-         x = "Anio", y = "Proporcion", color = "Cantidad de hijo/as")
+         x = "Anio", y = "Proporcion", color = "Cantidad de hijo/as")+
+    theme(axis.text = element_text(size=10), axis.text.x = element_text(angle=90, hjust=1)) 
   
   prestaciones_por_familia_tidy_min <- 
     prestaciones_por_familia_tidy %>% 
@@ -282,7 +283,8 @@ poblacion_por_sexo_edad <-  read_excel("data/c1_proyecciones_nac_2010_2040.xls",
     facet_wrap(vars(year(Fecha)))+
     labs(title = "Cantidad de prestaciones por edad",
          subtitle = "De 0 a 18 anios dividio en rangos de 5",
-         x = "Rando de Edad", y = "Cantidad", fill = "Genero")
+         x = "Rando de Edad", y = "Cantidad", fill = "Genero")+
+    theme(axis.text = element_text(size=8), axis.text.x = element_text(angle=90, hjust=1)) 
   
   #Titulares de derecho de la AUH Hijo e Hijo Discapacitado, por sexo y grupo de edad
   
@@ -325,7 +327,8 @@ poblacion_por_sexo_edad <-  read_excel("data/c1_proyecciones_nac_2010_2040.xls",
   prestaciones_sexo_edad_ninies_tidy %>% 
     ggplot(aes(x = rango_edad, y = cantidad))+
     geom_col(aes(fill=genero))+
-    facet_wrap(vars(year(Fecha)))
+    facet_wrap(vars(year(Fecha)))+
+    theme(axis.text = element_text(size=6), axis.text.x = element_text(angle=90, hjust=1)) 
   
 # Monto Liquidado por Prestación
   
