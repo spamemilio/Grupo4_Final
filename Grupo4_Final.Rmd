@@ -98,6 +98,8 @@ También se pretende fomentar tanto el cuidado de la salud como la formación in
 
 Se paga mensualmente el 80% de la asignación y una vez al año la diferencia del 20% de todos los meses, después de la presentación de las obligaciones de salud y escolaridad mediante la Libreta de Asignación Universal. El valor completo de la AUH general actualmente es de $ 4.504 y de $ 14.677 para hijos con discapacidad. También hay un valor adicional dependiendo de la zona de residencia.[^1]
 
+**Monto Percibido por Tipo de Asignaciones discriminado por hijo y zona geográfica**
+
 Asignación Familiar   | General  | Zona 1 ( 30% + )
 --------------------- | ---------| ---------------------
 Hijo                  | $ 4504   | $ 5856
@@ -111,7 +113,7 @@ General: Todo el país a excepción de las localidades comprendidas como Zona 1
 
 Zona 1: Provincias de La Pampa, Chubut, Neuquén, Río Negro, Santa Cruz, Tierra del Fuego, Antártida e Islas del Atlántico Sur y el Partido de Patagones, Pcia. de Buenos Aires
  
-La AUH tiene un límite de cinco hijos por familia. Este límite del quinto hijo no queda determinado el fundamento de por qué se estableció de esa manera. Considerando que coexiste con las pensiones no contributivas para madres de siete o más hijos, las familias con seis hijos quedan en una situación de desprotección y desigualdad ante aquellas familias de seis hijos de trabajadores asalariados formales. Este punto nos plantea una inquietud sobre la inclusión del sexto hijo en una futura actualización de la normativa vigente.
+La AUH tiene un límite de cinco hijos por familia. Los autores de este trabajo no han podido encontrar una fundamentación para el establecimiento de este límite. Considerando que coexiste con las pensiones no contributivas para madres de siete o más hijos, las familias con seis hijos quedan en una situación de desprotección y desigualdad ante aquellas familias de seis hijos de trabajadores asalariados formales. Este punto nos plantea una inquietud sobre la inclusión del sexto hijo en una futura actualización de la normativa vigente.
 
 ##### Asignación por Embarazo
 
@@ -255,13 +257,17 @@ En nuestro caso vamos a utilizar estos totalizadores:
 
 Vamos a analizar gráficamente la evolución de la AUH como porcentaje del PBI, del Gasto Total y del Gasto Social
 
-Veremos en estos gráficos que la participación de la AUH en estos indicadores es
-fluctuante y acompaña los períodos de la economía, en los años de crisis el porcentaje sube y viceversa
-
 
 ```{r graficos_presu_1, echo=FALSE, fig.dim = c(2, 2)}
  source(".\\analisis\\graficos_presu_1.R", local = knitr::knit_global())
 ```
+
+Lo que podemos ver en estos gráficos es lo siguiente:
+
+. el porcentaje de la AUH respecto a los demás índices es bajo, contrariamente a lo que se cree no llega a representar ni el 3% del Presupuesto Nacional y tampoco el 5% del Gasto Social (se conoce como Gasto Social al % de Presupuesto destinado a Servicios Sociales)
+
+. la participación de la AUH en estos indicadores es fluctuante y acompaña los períodos de la economía, cuando decrece el PBI (por ejemplo en los años 2018 y 2019, crece el % de AUH)
+
 
 ```{r graficos_presu_11, echo=FALSE}
  source(".\\analisis\\graficos_presu_11.R", local = knitr::knit_global())
@@ -274,7 +280,7 @@ Así vemos la importancia que tiene el gasto social sobre el gasto total (repres
 
 #### Alcance del Presupuesto Nacional
 
-Es relevante recordar que el Presupuesto Nacional no representa todo el Sector Público Nacional sino solo lo contemplado dentro de la Ley de Presupuesto. 
+Es relevante recordar que el Presupuesto Nacional no representa todo el gasto del Sector Público Nacional sino solo lo contemplado dentro de la Ley de Presupuesto. 
 
 Lo vemos en este cuadro
 
@@ -299,12 +305,12 @@ Ahora analizamos la AUH respecto a otras asignaciones familiares financiadas por
 ```
 
 Es interesante ver que las asignaciones familiares a trabajadores activos
-parecen tener una correlacion inversa con la AUH, cuando una sube la otra baja. Y por otro lado vemos que con el correr de los años y la crisis económica la AUH
+parecen tener una correlación inversa con la AUH, cuando una sube la otra baja. Y por otro lado vemos que con el correr de los años y la crisis económica la AUH
 termina representando un monto mayor que la asignación familiar a trabajadores activos. 
 
 ### Análisis de la AUH respecto al Gasto Social financiado por el Presupuesto Nacional
 
-Para continuar con el análisis vamos a utilizar el clasificador presupuestario por función. (llamado finalidad función)
+Para continuar con el análisis vamos a utilizar el clasificador presupuestario por función. (consignado formalmente con el nombre de finalidad función)
 
 Según el Manual de Clasificaciones Presupuestarias para el Sector Público Nacional (disponible en <https://capacitacion.mecon.gob.ar/manuales_nuevo/Presupuesto-Clasificador13.pdf>), la clasificación funcional presenta el gasto público según la naturaleza de los servicios que las instituciones públicas brindan a la comunidad. Los gastos clasificados por finalidad y función permiten determinar los objetivos generales y los medios a través de los cuales se estiman alcanzar éstos. En estos términos la clasificación por finalidades y funciones se constituye en un instrumento fundamental para la toma de decisiones por el poder político.
 

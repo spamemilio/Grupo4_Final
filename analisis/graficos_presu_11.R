@@ -7,7 +7,7 @@ gasto_unificado_tidy <- gasto_unificado_porcentajes %>%
 
 
 gasto1 <- gasto_unificado_tidy %>% 
-  ggplot(aes(x=ejercicio_presupuestario, y = Porcentaje)) +
+  ggplot(aes(x=ejercicio_presupuestario, y = Porcentaje*100)) +
   geom_line(aes(color=Tipo))+
   guides(color=guide_legend(ncol=1))+
   labs(title="Evolucion de AUH y Gasto Social  \n en % del Gasto Total y PBI",
