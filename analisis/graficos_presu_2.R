@@ -8,7 +8,7 @@ flia1 <- gasto_unif_familiares_por_anio %>%
   ggplot(aes(actividad_desc, porc_sobre_gasto_social*100)) +
   geom_col(aes(color=actividad_desc, fill=actividad_desc), position=position_dodge(width = 10))+
   facet_wrap(~ ejercicio_presupuestario, nrow=2)+
-  labs(title = "Asignaciones Familiares y AUH en % \n gasto social por anio", x = anio, y = "% Gasto Social")+
+  labs(title = paste0("Asignaciones Familiares y AUH en % \n gasto social por ",anio), x = anio, y = "% Gasto Social")+
   scale_fill_discrete(name="Asig. Fam.",
                       breaks=c("Asignaciones Familiares Activos", 
                                "Asignaciones Familiares Sector Público Nacional", 

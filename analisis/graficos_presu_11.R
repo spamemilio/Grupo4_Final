@@ -5,7 +5,7 @@ gasto_unificado_porcentajes <-
 gasto_unificado_tidy <- gasto_unificado_porcentajes %>% 
   pivot_longer(cols = -ejercicio_presupuestario, names_to = "Tipo", values_to = "Porcentaje")
 
-titulo1 = "Evolución de AUH y Gasto Social en % del Gasto Total y PBI"
+titulo1 = "Evolución de AUH y Gasto Social"
 Encoding(titulo1)<-"UTF-8"
 anio = "Año"
 Encoding(anio)<-"UTF-8"
@@ -15,12 +15,12 @@ gasto1 <- gasto_unificado_tidy %>%
   ggplot(aes(x=ejercicio_presupuestario, y = Porcentaje*100)) +
   geom_line(aes(color=Tipo))+
   guides(color=guide_legend(ncol=1))+
-  labs(title=titulo1,
+  labs(title=paste0(titulo1,"\n en % del Gasto Total y PBI"),
        y="% Auh sobre Gasto Social",
        x = anio) +
   theme(axis.text.x = element_text(size = 7), axis.title.x = element_blank(),
         axis.text.y = element_text(size = 7), axis.title.y = element_text(size = 7),
-        plot.title = element_text(size = 12),
+        plot.title = element_text(size = 10),
         legend.position="left")+
   scale_color_brewer(palette = "Set2")
 
