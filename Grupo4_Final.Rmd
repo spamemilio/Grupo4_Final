@@ -430,23 +430,26 @@ Vemos el mismo gráfico pero normalizando por el total de la población total de
 print(grafico_prestaciones_proporcion)
 ```
 \newpage
-Analizamos una correlación negativa entre asignaciones familiares y asignación por hijo. Interpretamos que esto es producto del deterioro de las condiciones laborales durante los años de crisis económica que expulsan a la fuerza de trabajo del mercado formal.
+Analizamos una correlación negativa entre asignaciones familiares y asignación por hijo. Interpretamos que esto es producto del deterioro de las condiciones laborales durante los años de crisis económica que expulsan a la fuerza de trabajo del mercado formal. Cada punto representa la relación entre AAFF y AUH de un mes.
 
 ```{r grafico_correlacion_auh_aaff, echo=FALSE, out.width="100%"}
 print(grafico_correlacion_auh_aaff)
 ```
+Si bien se puede apreciar cierta correlación creemos que la visualización puede verse interferida por el crecimiento poblacional año a año, por lo tanto realizamos una transformación.
 \newpage
-Para descontar las distorsiones por el crecimiento poblacional transformamos los valores en proporciones de los niños y niñas de acada momento.
+Para descontar las distorsiones por el crecimiento poblacional transformamos los valores en proporciones de los niños y niñas de cada momento. Es decir, dividimos el total de prestaciones de asignaciones familiares y el total de las AUH por la cantidad de niños y niñas de cada periodo.
 
 ```{r grafico_correlacion_auh_aaff_proporcion, echo=FALSE, out.width="100%"}
 print(grafico_correlacion_auh_aaff_proporcion)
 ```
+Si bien aquí es más fácil de visualizar el efecto, hay excepciones que distorsionan el gráfico. Podría ser por ejemplo la ampliación de la AUH a monotributistas sociales o los efectos de los movimientos en el tope de ingresos máximos para los que un trabajador/a pueda percibir las AAFF.
 \newpage
-Realizamos una visutalización similar para ver la correlación entre proporción de niños/as con AUH y tasa de desocupación. Como era de esperar, a mayor tasa de desocupación crece la proporción de AUH
+Realizamos una visualización similar para ver la correlación entre proporción de niños/as con AUH y tasa de desocupación. Como era de esperar, a mayor tasa de desocupación crece la proporción de AUH. Cada punto representa la relación entre tasa de desempleo y proporción de la población de niños y niñas que recibió la AUH para un mes en particular entre los años 2013 y 2020.
 
 ```{r grafico_correlacion_auh_tdes, echo=FALSE, out.width="100%"}
 print(grafico_correlacion_auh_tdes)
 ```
+
 \newpage
 
 A continuación analizamos la evolución de la cantidad de hijos/as por titular de la AUH. En contraposición con ciertas creencias, vemos que más de la mayoría de las personas tienen un solo hijo/a. Y que esa proporción no solo no baja sino que crece. A principio de la serie la proporción de titulares con un hijo/a es del `r round(unlist(prestaciones_por_familia_tidy_dif[1,"cantidad_min"])*100,2) `% mientras que al final pasó a `r round(unlist(prestaciones_por_familia_tidy_dif[1,"cantidad_max"])*100,2) `%. Por el contrario la proporción de 5 beneficiarios por familia pasó del `r round(unlist(prestaciones_por_familia_tidy_dif[5,"cantidad_min"])*100,2) `% al `r round(unlist(prestaciones_por_familia_tidy_dif[5,"cantidad_max"])*100,2) `%.
@@ -463,7 +466,7 @@ print(grafico_prestaciones_edad)
 ```
 
 \newpage
-Otro enfoque similar al anterior pero observando la composición de las edades de los hijos/as beneficiarios. Si comparamos los primeros años con los últimos observamos que cae la proporción de niños/as de 0 a 2 años que perciben el derecho sobre el total. Esto podría estar indicando una basa en la tasa de la natalidad, considerando que la cantidad total de prestaciones AUH viene subiendo.
+Otro enfoque similar al anterior pero observando la composición de las edades de los hijos/as beneficiarios. Si comparamos los primeros años con los últimos observamos que cae la proporción de niños/as de 0 a 2 años que perciben el derecho sobre el total. Esto podría estar indicando una baja en la tasa de la natalidad, considerando que la cantidad total de prestaciones AUH viene subiendo.
 
 ```{r grafico_prestaciones_sexo_edad_ninies, echo=FALSE, out.width="100%"}
 print(grafico_prestaciones_sexo_edad_ninies)
@@ -481,7 +484,7 @@ Este límite del quinto hijo nos plantea una inquietud sobre la inclusión del s
 
 Otra observación que quiebra la universalidad es que los trabajadores que tienen ingresos familiares superiores a $ 200.000, dejan de cobrar asignación familiar por hijo. Si bien se puede pensar que no lo necesitan porque su ingreso es suficiente para la educación y protección de sus hijos; el monto no parece ser tan elevado, pero se considera suficiente para quedar excluidos. Asimismo, podemos considerar que este grupo paga impuesto a las ganancias y que por lo tanto pueden deducir de la liquidación de su impuesto, a sus hijos por un monto similar al de las asignaciones por hijo.
 
-Finalmente podemos concluir que esta política social ha causado un impacto positivo con su implementación al punto de transformarse en un beneficio muy difícil de cancelar en el futuro, no solo porque transfiere fondo en forma directa y permanente a las familias más vulnerables de la sociedad sino también, porque promueve la inserción en el sistema de salud e incentivar la escolaridad, asegurando así la inclusión y protección de derechos para todos los niños beneficiarios.
+Finalmente podemos concluir que esta política social ha causado un impacto positivo con su implementación al punto de transformarse en un beneficio muy difícil de cancelar en el futuro, no solo porque transfiere fondos en forma directa y permanente a las familias más vulnerables de la sociedad sino también, porque promueve la inserción en el sistema de salud e incentiva la escolaridad, asegurando así la inclusión y protección de derechos para todos los niños beneficiarios.
 
 \newpage
 ## Bibliografía

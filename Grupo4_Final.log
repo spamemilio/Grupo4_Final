@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.23 (TeX Live 2021/W32TeX) (preloaded format=pdflatex 2021.8.30)  30 AUG 2021 12:33
+This is pdfTeX, Version 3.141592653-2.6-1.40.23 (TeX Live 2021/W32TeX) (preloaded format=pdflatex 2021.8.30)  30 AUG 2021 22:28
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -590,7 +590,7 @@ File: t1lmtt.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 
 {c:/Users/emili/AppData/Roaming/TinyTeX/texmf-var/fonts/map/pdftex/updmap/pdfte
 x.map}] [2] [3] [4] [5]
-<Grupo4_Final_files/figure-latex/graficos_presu_1-1.pdf, id=116, 144.54pt x 144
+<Grupo4_Final_files/figure-latex/graficos_presu_1-1.pdf, id=120, 144.54pt x 144
 .54pt>
 File: Grupo4_Final_files/figure-latex/graficos_presu_1-1.pdf Graphic file (type
  pdf)
@@ -598,7 +598,7 @@ File: Grupo4_Final_files/figure-latex/graficos_presu_1-1.pdf Graphic file (type
 Package pdftex.def Info: Grupo4_Final_files/figure-latex/graficos_presu_1-1.pdf
   used on input line 549.
 (pdftex.def)             Requested size: 144.54623pt x 144.54623pt.
-<Grupo4_Final_files/figure-latex/graficos_presu_1-2.pdf, id=117, 144.54pt x 144
+<Grupo4_Final_files/figure-latex/graficos_presu_1-2.pdf, id=121, 144.54pt x 144
 .54pt>
 File: Grupo4_Final_files/figure-latex/graficos_presu_1-2.pdf Graphic file (type
  pdf)
@@ -606,7 +606,7 @@ File: Grupo4_Final_files/figure-latex/graficos_presu_1-2.pdf Graphic file (type
 Package pdftex.def Info: Grupo4_Final_files/figure-latex/graficos_presu_1-2.pdf
   used on input line 550.
 (pdftex.def)             Requested size: 144.54623pt x 144.54623pt.
-<Grupo4_Final_files/figure-latex/graficos_presu_1-3.pdf, id=118, 144.54pt x 144
+<Grupo4_Final_files/figure-latex/graficos_presu_1-3.pdf, id=122, 144.54pt x 144
 .54pt>
 File: Grupo4_Final_files/figure-latex/graficos_presu_1-3.pdf Graphic file (type
  pdf)
@@ -614,7 +614,7 @@ File: Grupo4_Final_files/figure-latex/graficos_presu_1-3.pdf Graphic file (type
 Package pdftex.def Info: Grupo4_Final_files/figure-latex/graficos_presu_1-3.pdf
   used on input line 551.
 (pdftex.def)             Requested size: 144.54623pt x 144.54623pt.
-<Grupo4_Final_files/figure-latex/graficos_presu_11-1.pdf, id=119, 469.755pt x 3
+<Grupo4_Final_files/figure-latex/graficos_presu_11-1.pdf, id=123, 469.755pt x 3
 25.215pt>
 File: Grupo4_Final_files/figure-latex/graficos_presu_11-1.pdf Graphic file (typ
 e pdf)
@@ -625,36 +625,36 @@ f  used on input line 553.
 [6 <./Grupo4_Final_files/figure-latex/graficos_presu_1-1.pdf> <./Grupo4_Final_f
 iles/figure-latex/graficos_presu_1-2.pdf> <./Grupo4_Final_files/figure-latex/gr
 aficos_presu_1-3.pdf>]
-<Alcance_presupuesto.JPG, id=142, 394.47375pt x 319.94531pt>
+<Alcance_presupuesto.JPG, id=147, 394.47375pt x 319.94531pt>
 File: Alcance_presupuesto.JPG Graphic file (type jpg)
 <use Alcance_presupuesto.JPG>
 Package pdftex.def Info: Alcance_presupuesto.JPG  used on input line 572.
 (pdftex.def)             Requested size: 394.47278pt x 319.94452pt.
 [7 <./Grupo4_Final_files/figure-latex/graficos_presu_11-1.pdf>]
-<Grupo4_Final_files/figure-latex/graficos_presu_2-1.pdf, id=157, 469.755pt x 32
+<Grupo4_Final_files/figure-latex/graficos_presu_2-1.pdf, id=161, 469.755pt x 32
 5.215pt>
 File: Grupo4_Final_files/figure-latex/graficos_presu_2-1.pdf Graphic file (type
  pdf)
 <use Grupo4_Final_files/figure-latex/graficos_presu_2-1.pdf>
 Package pdftex.def Info: Grupo4_Final_files/figure-latex/graficos_presu_2-1.pdf
   used on input line 599.
-(pdftex.def)             Requested size: 375.80452pt x 260.17235pt.
-<Grupo4_Final_files/figure-latex/graficos_presu_2-2.pdf, id=158, 469.755pt x 32
+(pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
+<Grupo4_Final_files/figure-latex/graficos_presu_2-2.pdf, id=162, 469.755pt x 32
 5.215pt>
 File: Grupo4_Final_files/figure-latex/graficos_presu_2-2.pdf Graphic file (type
  pdf)
 <use Grupo4_Final_files/figure-latex/graficos_presu_2-2.pdf>
 Package pdftex.def Info: Grupo4_Final_files/figure-latex/graficos_presu_2-2.pdf
   used on input line 600.
-(pdftex.def)             Requested size: 375.80452pt x 260.17235pt.
+(pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
 
-Overfull \hbox (284.07623pt too wide) in paragraph at lines 599--601
-[][] [] 
+Underfull \hbox (badness 10000) in paragraph at lines 599--601
+[][]
  []
 
 [8 <./Alcance_presupuesto.JPG>] [9 <./Grupo4_Final_files/figure-latex/graficos_
-presu_2-1.pdf> <./Grupo4_Final_files/figure-latex/graficos_presu_2-2.pdf>]
-<Grupo4_Final_files/figure-latex/graficos_presu_3-1.pdf, id=183, 469.755pt x 32
+presu_2-1.pdf>] [10 <./Grupo4_Final_files/figure-latex/graficos_presu_2-2.pdf>]
+<Grupo4_Final_files/figure-latex/graficos_presu_3-1.pdf, id=191, 469.755pt x 32
 5.215pt>
 File: Grupo4_Final_files/figure-latex/graficos_presu_3-1.pdf Graphic file (type
  pdf)
@@ -662,8 +662,8 @@ File: Grupo4_Final_files/figure-latex/graficos_presu_3-1.pdf Graphic file (type
 Package pdftex.def Info: Grupo4_Final_files/figure-latex/graficos_presu_3-1.pdf
   used on input line 733.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-[10]
-<Grupo4_Final_files/figure-latex/graficos_presu_4-1.pdf, id=188, 469.755pt x 32
+[11]
+<Grupo4_Final_files/figure-latex/graficos_presu_4-1.pdf, id=196, 469.755pt x 32
 5.215pt>
 File: Grupo4_Final_files/figure-latex/graficos_presu_4-1.pdf Graphic file (type
  pdf)
@@ -671,8 +671,8 @@ File: Grupo4_Final_files/figure-latex/graficos_presu_4-1.pdf Graphic file (type
 Package pdftex.def Info: Grupo4_Final_files/figure-latex/graficos_presu_4-1.pdf
   used on input line 743.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-[11 <./Grupo4_Final_files/figure-latex/graficos_presu_3-1.pdf>]
-<Grupo4_Final_files/figure-latex/graficos_presu_5-1.pdf, id=198, 469.755pt x 32
+[12 <./Grupo4_Final_files/figure-latex/graficos_presu_3-1.pdf>]
+<Grupo4_Final_files/figure-latex/graficos_presu_5-1.pdf, id=206, 469.755pt x 32
 5.215pt>
 File: Grupo4_Final_files/figure-latex/graficos_presu_5-1.pdf Graphic file (type
  pdf)
@@ -680,134 +680,128 @@ File: Grupo4_Final_files/figure-latex/graficos_presu_5-1.pdf Graphic file (type
 Package pdftex.def Info: Grupo4_Final_files/figure-latex/graficos_presu_5-1.pdf
   used on input line 748.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-[12 <./Grupo4_Final_files/figure-latex/graficos_presu_4-1.pdf>]
-Overfull \hbox (249.49289pt too wide) in paragraph at lines 764--764
-[]\T1/lmtt/m/n/10 ## [1] "Grafico de burbujas para graficar mejor la relacion e
-ntre asignaciones familiares y otros gastos sociales (sin Seguridad Social)"[] 
-
- []
-
-<Grupo4_Final_files/figure-latex/graficos_presu_6-1.pdf, id=208, 469.755pt x 32
+[13 <./Grupo4_Final_files/figure-latex/graficos_presu_4-1.pdf>]
+<Grupo4_Final_files/figure-latex/graficos_presu_6-1.pdf, id=217, 469.755pt x 32
 5.215pt>
 File: Grupo4_Final_files/figure-latex/graficos_presu_6-1.pdf Graphic file (type
  pdf)
 <use Grupo4_Final_files/figure-latex/graficos_presu_6-1.pdf>
 Package pdftex.def Info: Grupo4_Final_files/figure-latex/graficos_presu_6-1.pdf
-  used on input line 766.
+  used on input line 762.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-[13 <./Grupo4_Final_files/figure-latex/graficos_presu_5-1.pdf>]
-Overfull \hbox (128.74324pt too wide) in paragraph at lines 770--770
-[]\T1/lmtt/m/n/10 ## [1] "Grafico de burbujas para graficar mejor relacion entr
-e AUH y otros gastos sociales (sin Seguridad Social)"[] 
- []
-
-<Grupo4_Final_files/figure-latex/graficos_presu_6-2.pdf, id=219, 469.755pt x 32
+<Grupo4_Final_files/figure-latex/graficos_presu_6-2.pdf, id=218, 469.755pt x 32
 5.215pt>
 File: Grupo4_Final_files/figure-latex/graficos_presu_6-2.pdf Graphic file (type
  pdf)
 <use Grupo4_Final_files/figure-latex/graficos_presu_6-2.pdf>
 Package pdftex.def Info: Grupo4_Final_files/figure-latex/graficos_presu_6-2.pdf
-  used on input line 772.
+  used on input line 763.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-[14 <./Grupo4_Final_files/figure-latex/graficos_presu_6-1.pdf>]
-<Grupo4_Final_files/figure-latex/grafico_prestaciones_desagredadas-1.pdf, id=23
-2, 469.755pt x 325.215pt>
+
+Underfull \hbox (badness 10000) in paragraph at lines 762--764
+[][]
+ []
+
+[14 <./Grupo4_Final_files/figure-latex/graficos_presu_5-1.pdf>] [15 <./Grupo4_F
+inal_files/figure-latex/graficos_presu_6-1.pdf>] [16 <./Grupo4_Final_files/figu
+re-latex/graficos_presu_6-2.pdf>]
+<Grupo4_Final_files/figure-latex/grafico_prestaciones_desagredadas-1.pdf, id=25
+2, 469.755pt x 505.89pt>
 File: Grupo4_Final_files/figure-latex/grafico_prestaciones_desagredadas-1.pdf G
 raphic file (type pdf)
 <use Grupo4_Final_files/figure-latex/grafico_prestaciones_desagredadas-1.pdf>
 Package pdftex.def Info: Grupo4_Final_files/figure-latex/grafico_prestaciones_d
 esagredadas-1.pdf  used on input line 783.
-(pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-[15 <./Grupo4_Final_files/figure-latex/graficos_presu_6-2.pdf>]
-<Grupo4_Final_files/figure-latex/datos_prestaciones_auh-1.pdf, id=246, 469.755p
+(pdftex.def)             Requested size: 469.75386pt x 505.88875pt.
+[17 <./Grupo4_Final_files/figure-latex/grafico_prestaciones_desagredadas-1.pdf>
+]
+<Grupo4_Final_files/figure-latex/datos_prestaciones_auh-1.pdf, id=263, 469.755p
 t x 325.215pt>
 File: Grupo4_Final_files/figure-latex/datos_prestaciones_auh-1.pdf Graphic file
  (type pdf)
 <use Grupo4_Final_files/figure-latex/datos_prestaciones_auh-1.pdf>
 Package pdftex.def Info: Grupo4_Final_files/figure-latex/datos_prestaciones_auh
--1.pdf  used on input line 788.
+-1.pdf  used on input line 790.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-[16 <./Grupo4_Final_files/figure-latex/grafico_prestaciones_desagredadas-1.pdf>
-]
-<Grupo4_Final_files/figure-latex/grafico_prestaciones_proporcion-1.pdf, id=256,
- 469.755pt x 325.215pt>
+[18 <./Grupo4_Final_files/figure-latex/datos_prestaciones_auh-1.pdf>]
+<Grupo4_Final_files/figure-latex/grafico_prestaciones_proporcion-1.pdf, id=273,
+ 469.755pt x 505.89pt>
 File: Grupo4_Final_files/figure-latex/grafico_prestaciones_proporcion-1.pdf Gra
 phic file (type pdf)
 <use Grupo4_Final_files/figure-latex/grafico_prestaciones_proporcion-1.pdf>
 Package pdftex.def Info: Grupo4_Final_files/figure-latex/grafico_prestaciones_p
-roporcion-1.pdf  used on input line 794.
-(pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-[17 <./Grupo4_Final_files/figure-latex/datos_prestaciones_auh-1.pdf>]
-<Grupo4_Final_files/figure-latex/grafico_correlacion_auh_aaff-1.pdf, id=266, 46
+roporcion-1.pdf  used on input line 798.
+(pdftex.def)             Requested size: 469.75386pt x 505.88875pt.
+[19 <./Grupo4_Final_files/figure-latex/grafico_prestaciones_proporcion-1.pdf>]
+<Grupo4_Final_files/figure-latex/grafico_correlacion_auh_aaff-1.pdf, id=285, 46
 9.755pt x 325.215pt>
 File: Grupo4_Final_files/figure-latex/grafico_correlacion_auh_aaff-1.pdf Graphi
 c file (type pdf)
 <use Grupo4_Final_files/figure-latex/grafico_correlacion_auh_aaff-1.pdf>
 Package pdftex.def Info: Grupo4_Final_files/figure-latex/grafico_correlacion_au
-h_aaff-1.pdf  used on input line 801.
+h_aaff-1.pdf  used on input line 804.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-[18 <./Grupo4_Final_files/figure-latex/grafico_prestaciones_proporcion-1.pdf>]
+[20 <./Grupo4_Final_files/figure-latex/grafico_correlacion_auh_aaff-1.pdf>]
 <Grupo4_Final_files/figure-latex/grafico_correlacion_auh_aaff_proporcion-1.pdf,
- id=276, 469.755pt x 325.215pt>
+ id=295, 469.755pt x 325.215pt>
 File: Grupo4_Final_files/figure-latex/grafico_correlacion_auh_aaff_proporcion-1
 .pdf Graphic file (type pdf)
 <use Grupo4_Final_files/figure-latex/grafico_correlacion_auh_aaff_proporcion-1.
 pdf>
 Package pdftex.def Info: Grupo4_Final_files/figure-latex/grafico_correlacion_au
-h_aaff_proporcion-1.pdf  used on input line 807.
+h_aaff_proporcion-1.pdf  used on input line 809.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-[19 <./Grupo4_Final_files/figure-latex/grafico_correlacion_auh_aaff-1.pdf>]
-<Grupo4_Final_files/figure-latex/grafico_correlacion_auh_tdes-1.pdf, id=288, 46
+[21 <./Grupo4_Final_files/figure-latex/grafico_correlacion_auh_aaff_proporcion-
+1.pdf>]
+<Grupo4_Final_files/figure-latex/grafico_correlacion_auh_tdes-1.pdf, id=305, 46
 9.755pt x 325.215pt>
 File: Grupo4_Final_files/figure-latex/grafico_correlacion_auh_tdes-1.pdf Graphi
 c file (type pdf)
 <use Grupo4_Final_files/figure-latex/grafico_correlacion_auh_tdes-1.pdf>
 Package pdftex.def Info: Grupo4_Final_files/figure-latex/grafico_correlacion_au
-h_tdes-1.pdf  used on input line 813.
+h_tdes-1.pdf  used on input line 814.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-[20 <./Grupo4_Final_files/figure-latex/grafico_correlacion_auh_aaff_proporcion-
-1.pdf>]
-<Grupo4_Final_files/figure-latex/grafico_prestaciones_por_familia-1.pdf, id=298
+[22 <./Grupo4_Final_files/figure-latex/grafico_correlacion_auh_tdes-1.pdf>]
+<Grupo4_Final_files/figure-latex/grafico_prestaciones_por_familia-1.pdf, id=315
 , 469.755pt x 325.215pt>
 File: Grupo4_Final_files/figure-latex/grafico_prestaciones_por_familia-1.pdf Gr
 aphic file (type pdf)
 <use Grupo4_Final_files/figure-latex/grafico_prestaciones_por_familia-1.pdf>
 Package pdftex.def Info: Grupo4_Final_files/figure-latex/grafico_prestaciones_p
-or_familia-1.pdf  used on input line 823.
+or_familia-1.pdf  used on input line 825.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-[21 <./Grupo4_Final_files/figure-latex/grafico_correlacion_auh_tdes-1.pdf>]
-<Grupo4_Final_files/figure-latex/grafico_prestaciones_edad-1.pdf, id=308, 469.7
+[23 <./Grupo4_Final_files/figure-latex/grafico_prestaciones_por_familia-1.pdf>]
+<Grupo4_Final_files/figure-latex/grafico_prestaciones_edad-1.pdf, id=325, 469.7
 55pt x 325.215pt>
 File: Grupo4_Final_files/figure-latex/grafico_prestaciones_edad-1.pdf Graphic f
 ile (type pdf)
 <use Grupo4_Final_files/figure-latex/grafico_prestaciones_edad-1.pdf>
 Package pdftex.def Info: Grupo4_Final_files/figure-latex/grafico_prestaciones_e
-dad-1.pdf  used on input line 834.
+dad-1.pdf  used on input line 835.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-[22 <./Grupo4_Final_files/figure-latex/grafico_prestaciones_por_familia-1.pdf>]
+[24 <./Grupo4_Final_files/figure-latex/grafico_prestaciones_edad-1.pdf>]
 <Grupo4_Final_files/figure-latex/grafico_prestaciones_sexo_edad_ninies-1.pdf, i
-d=318, 469.755pt x 325.215pt>
+d=335, 469.755pt x 325.215pt>
 File: Grupo4_Final_files/figure-latex/grafico_prestaciones_sexo_edad_ninies-1.p
 df Graphic file (type pdf)
 <use Grupo4_Final_files/figure-latex/grafico_prestaciones_sexo_edad_ninies-1.pd
 f>
 Package pdftex.def Info: Grupo4_Final_files/figure-latex/grafico_prestaciones_s
-exo_edad_ninies-1.pdf  used on input line 836.
+exo_edad_ninies-1.pdf  used on input line 846.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-[23 <./Grupo4_Final_files/figure-latex/grafico_prestaciones_edad-1.pdf>] [24 <.
-/Grupo4_Final_files/figure-latex/grafico_prestaciones_sexo_edad_ninies-1.pdf>] 
-[25] (./Grupo4_Final.aux)
+[25 <./Grupo4_Final_files/figure-latex/grafico_prestaciones_sexo_edad_ninies-1.
+pdf>] [26] [27] (./Grupo4_Final.aux)
 Package rerunfilecheck Info: File `Grupo4_Final.out' has not changed.
-(rerunfilecheck)             Checksum: AAB52FB0BC10BFA4E969C4B50C12F069;4569.
+(rerunfilecheck)             Checksum: BC3DEDCB03202C5FE830D3E71EEB1BA9;4687.
  ) 
 Here is how much of TeX's memory you used:
- 10848 strings out of 480559
- 167503 string characters out of 5901528
- 467980 words of memory out of 5000000
- 28189 multiletter control sequences out of 15000+600000
+ 10868 strings out of 480559
+ 168573 string characters out of 5901528
+ 468019 words of memory out of 5000000
+ 28205 multiletter control sequences out of 15000+600000
  458371 words of font info for 70 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 60i,8n,66p,934b,442s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 60i,8n,66p,934b,440s stack positions out of 5000i,500n,10000p,200000b,80000s
 {c:/Users/emili/AppData/Roaming/TinyTeX/texmf-dist/fonts/enc/dvips/lm/lm-ec.e
 nc}{c:/Users/emili/AppData/Roaming/TinyTeX/texmf-dist/fonts/enc/dvips/lm/lm-ts1
 .enc}<c:/Users/emili/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/lm/l
@@ -820,10 +814,10 @@ onts/type1/public/lm/lmr6.pfb><c:/Users/emili/AppData/Roaming/TinyTeX/texmf-dis
 t/fonts/type1/public/lm/lmr7.pfb><c:/Users/emili/AppData/Roaming/TinyTeX/texmf-
 dist/fonts/type1/public/lm/lmr8.pfb><c:/Users/emili/AppData/Roaming/TinyTeX/tex
 mf-dist/fonts/type1/public/lm/lmtt10.pfb>
-Output written on Grupo4_Final.pdf (25 pages, 423339 bytes).
+Output written on Grupo4_Final.pdf (27 pages, 425468 bytes).
 PDF statistics:
- 403 PDF objects out of 1000 (max. 8388607)
- 312 compressed objects within 4 object streams
- 66 named destinations out of 1000 (max. 500000)
- 210 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 430 PDF objects out of 1000 (max. 8388607)
+ 337 compressed objects within 4 object streams
+ 70 named destinations out of 1000 (max. 500000)
+ 218 words of extra memory for PDF output out of 10000 (max. 10000000)
 

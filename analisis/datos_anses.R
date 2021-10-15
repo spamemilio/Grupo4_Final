@@ -199,7 +199,8 @@ poblacion_por_sexo_edad <-  read_excel("data/c1_proyecciones_nac_2010_2040.xls",
   prestaciones_auh_aaff %>% 
     ggplot(aes(x=total_aaff,y=total_auh)) +
     geom_point(aes(color=anio))+
-    scale_color_brewer(palette="Dark2")
+    scale_color_brewer(palette="Dark2")+
+    facet_wrap(~anio)
   
   grafico_correlacion_auh_aaff_proporcion <- 
     prestaciones_auh_aaff %>% 
@@ -281,9 +282,9 @@ poblacion_por_sexo_edad <-  read_excel("data/c1_proyecciones_nac_2010_2040.xls",
   ggplot(aes(x = rango_edad, y = cantidad))+
     geom_col(aes(fill=genero))+
     facet_wrap(vars(year(Fecha)))+
-    labs(title = "Cantidad de prestaciones por edad",
-         subtitle = "De 0 a 18 anios dividio en rangos de 5",
-         x = "Rando de Edad", y = "Cantidad", fill = "Genero")+
+    labs(title = "Cantidad de prestaciones por edad del titular",
+         subtitle = "De 0 a 18 anios dividio en rangos de 5. De acuerdo a edad de madre, padre o cuidador responsable",
+         x = "Rango de Edad", y = "Cantidad", fill = "Genero")+
     theme(axis.text = element_text(size=8), axis.text.x = element_text(angle=90, hjust=1)) 
   
   #Titulares de derecho de la AUH Hijo e Hijo Discapacitado, por sexo y grupo de edad

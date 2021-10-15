@@ -112,7 +112,7 @@ prestaciones_auh_tdes <- prestaciones_tidy %>%
 grafico_correlacion_auh_tdes <- 
   prestaciones_auh_tdes %>% 
   ggplot(aes(x=proporcion_auh,y=eph_continua_tasa_desempleo_total)) +
-  geom_point(aes(color=mes))+
+  geom_point()+
   scale_color_brewer(palette="Dark2")
 
 
