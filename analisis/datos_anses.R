@@ -5,6 +5,20 @@ library(readxl)
 library(zoo)
 options(scipen = 100, Encoding("WINDOWS-1252") )
 
+#Para los graficos, asi salen con enie y acentos
+tit_evolucion = "Evolución "
+Encoding(tit_evolucion)<-"UTF-8"
+tit_anio = "Año"
+Encoding(tit_anio)<-"UTF-8"
+tit_proporcion = "Proporción "
+Encoding(tit_proporcion)<-"UTF-8"
+tit_categoria = "Categoría "
+Encoding(tit_categoria)<-"UTF-8"
+tit_asignacion = "Asignación "
+Encoding(tit_asignacion)<-"UTF-8"
+
+
+
 #prestaciones_previsionales_sipa_por_tipo <- read_csv("https://infra.datos.gob.ar/catalog/sspm/dataset/189/distribution/189.1/download/prestaciones-previsionales-sipa-por-tipo.csv")
 
 prestaciones_previsionales_sipa_por_tipo <- read_csv("data/prestaciones-previsionales-sipa-por-tipo.csv") %>% 
@@ -44,9 +58,9 @@ ggplot(aes(x=indice_tiempo, y = cantidad)) +
   guides(color=guide_legend(ncol=2))+
   theme(legend.position="bottom", legend.text=element_text(size=8))+
   labs(title = "Prestaciones ANSES",
-       subtitle = paste("Evolucion ", year(min(prestaciones_tidy$indice_tiempo)),
+       subtitle = paste(tit_evolucion, year(min(prestaciones_tidy$indice_tiempo)),
                         " a ", year(max(prestaciones_tidy$indice_tiempo))),
-       x = "Anio", y = "Cantidad de beneficiarios", color = "Prestacion")
+       x = tit_anio, y = "Cantidad de beneficiarios", color = "Prestacion")
 
 
 totales_por_prestacion <- prestaciones_tidy %>% 
@@ -64,10 +78,10 @@ prestaciones_auh %>%
   geom_line(aes(color=prestacion),size=1)+
   guides(color=guide_legend(ncol=1))+
   theme(legend.position="bottom")+
-  labs(title = "Asignacion Universal por Hijo/a",
-       subtitle = paste("Por categorias Evolucion ", year(min(prestaciones_auh$indice_tiempo)),
+  labs(title = paste0(tit_asignacion, "Universal por Hijo/a"),
+       subtitle = paste(paste0("Por ",tit_categoria," ",tit_evolucion), year(min(prestaciones_auh$indice_tiempo)),
                         " a ", year(max(prestaciones_auh$indice_tiempo))),
-       x = "Anio", y = "Cantidad de beneficiarios", color = "Categoria")
+       x = tit_anio, y = "Cantidad de beneficiarios", color = "Categoria")
 
 totales_por_tipo_auh <- prestaciones_auh %>% 
   group_by(prestacion) %>% 
@@ -176,9 +190,9 @@ poblacion_por_sexo_edad <-  read_excel("data/c1_proyecciones_nac_2010_2040.xls",
     guides(color=guide_legend(ncol=1))+
     scale_color_brewer(palette="Dark2")+
     theme(legend.position="bottom",legend.text=element_text(size=8))+
-    labs(title = "Evolucion categorias AUH",
+    labs(title = paste0(tit_evolucion,tit_categoria, "AUH"),
          subtitle = "Normalizado por poblacion total de 0 a 18",
-         x = "Anio", y = "Proporcion de Beneficiarios/as", color = "Categoria")
+         x = tit_anio, y = paste0(tit_proporcion, " de Beneficiarios/as"), color = "Categoria")
   
   poblacion_por_edad_0_19 %>% 
     ggplot(aes(x=anio, y=total_menores))+
@@ -232,8 +246,8 @@ poblacion_por_sexo_edad <-  read_excel("data/c1_proyecciones_nac_2010_2040.xls",
     prestaciones_por_familia_tidy %>% 
     ggplot(aes(x=Fecha, y=cantidad))+
     geom_area(aes(fill=cantidad_hijes))+
-    labs(title = "Evolucion proporcion cantidad de hijos/as por titular",
-         x = "Anio", y = "Proporcion", color = "Cantidad de hijo/as")+
+    labs(title = paste0(tit_evolucion, tit_proporcion, " cantidad de hijos/as por titular"),
+         x = tit_anio, y = tit_proporcion, color = "Cantidad de hijo/as")+
     theme(axis.text = element_text(size=10), axis.text.x = element_text(angle=90, hjust=1)) 
   
   prestaciones_por_familia_tidy_min <- 
@@ -283,7 +297,7 @@ poblacion_por_sexo_edad <-  read_excel("data/c1_proyecciones_nac_2010_2040.xls",
     geom_col(aes(fill=genero))+
     facet_wrap(vars(year(Fecha)))+
     labs(title = "Cantidad de prestaciones por edad del titular",
-         subtitle = "De 0 a 18 anios dividio en rangos de 5. De acuerdo a edad de madre, padre o cuidador responsable",
+         subtitle = "Dividido en rangos de 5. De acuerdo a edad de madre, padre o cuidador responsable",
          x = "Rango de Edad", y = "Cantidad", fill = "Genero")+
     theme(axis.text = element_text(size=8), axis.text.x = element_text(angle=90, hjust=1)) 
   
@@ -332,6 +346,7 @@ poblacion_por_sexo_edad <-  read_excel("data/c1_proyecciones_nac_2010_2040.xls",
     theme(axis.text = element_text(size=6), axis.text.x = element_text(angle=90, hjust=1)) 
   
 # Monto Liquidado por Prestación
+  
   
   montos_liquidados <- read_excel("data/H.1.2.Total Pais. Montos liquidados de la AUH. Hijo e Hijo Discapacitado.xlsx", 
                        col_types = c("date", "numeric", "numeric", 
